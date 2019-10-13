@@ -17,6 +17,6 @@
 \contentsline {section}{II.8. Dataset problems}{7}% 
 \contentsline {chapter}{IV. Sound classification predictive models}{8}% 
 \contentsline {section}{IV.1. Models brief description}{9}% 
-\contentsline {section}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}{9}% 
+\contentsline {subsection}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}{9}% 
 \contentsline {section}{IV.2. Evaluation metric}{11}% 
 \contentsline {chapter}{Bibliography}{12}% 
