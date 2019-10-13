@@ -2,9 +2,20 @@
 \contentsline {chapter}{Contents}{2}% 
 \contentsline {chapter}{I. Introduction}{3}% 
 \contentsline {section}{I.1. Competition's description}{3}% 
-\contentsline {section}{I.2. Motivation}{3}% 
-\contentsline {chapter}{II. Dataset description}{3}% 
-\contentsline {chapter}{IV. Sound classification predictive models}{4}% 
-\contentsline {section}{IV.1. Models brief description}{5}% 
-\contentsline {section}{IV.2. Evaluation metrics}{5}% 
-\contentsline {chapter}{V. Analyzing Kaggle public kernels}{5}% 
+\contentsline {section}{I.2. Motivation}{4}% 
+\contentsline {section}{I.3. Timeline}{4}% 
+\contentsline {chapter}{II. Dataset description}{4}% 
+\contentsline {section}{II.1. Audio Dataset}{5}% 
+\contentsline {section}{II.2. Ground Truth Labels}{5}% 
+\contentsline {section}{II.3. Format and License}{5}% 
+\contentsline {section}{II.4. Train set}{6}% 
+\contentsline {subsection}{II.4.1. Curated subset}{6}% 
+\contentsline {subsection}{II.4.2. Noisy subset}{6}% 
+\contentsline {section}{II.5. Test set}{7}% 
+\contentsline {section}{II.6. Files}{7}% 
+\contentsline {section}{II.7. Columns}{7}% 
+\contentsline {chapter}{IV. Sound classification predictive models}{7}% 
+\contentsline {section}{IV.1. Models brief description}{8}% 
+\contentsline {section}{IV.2. Evaluation metrics}{8}% 
+\contentsline {chapter}{V. Analyzing Kaggle public kernels}{8}% 
+\contentsline {chapter}{Bibliography}{9}% 
