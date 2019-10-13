@@ -485,7 +485,74 @@ def calculate_overall_lwlrap_sklearn(truth, scores):
     return overall_lwlrap
 \end{lstlisting}
 
+%----------------------------------------------------------------------------------------
+%	Application prototype
+%----------------------------------------------------------------------------------------
 
+
+\addcontentsline{toc}{chapter}{V. Application prototype}
+\chapter*{V. Application prototype}
+\
+
+%----------------------------------------------------------------------------------------
+%	Use cases
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{V.1. Use cases}
+\section*{V.1. Use cases}
+\
+\begin{itemize}
+	\item Semi-automatized System:
+		\begin{itemize}
+			\item can use reinforcement learning for improving tagging accuracy
+		\end{itemize}
+	\item Signals that may help deaf users in:
+		\begin{itemize}
+			\item dangerous situations (outdoor activities/ fire alarms)
+			\item daily activities 
+			\item movie captioning
+			\begin{itemize}
+				\item different details like gun shooting in background may help deaf users having a better entertainment experience while watching movies
+			\end{itemize}
+		\end{itemize}
+
+	\item video indexing for search engines
+	\item security (e.g. detecting breaking in sounds, hearth attack/ people suffering, etc.)
+	\item analyzing audience behavior(excitement, boredom, etc.)
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	Model integration
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{V.2. Model integration}
+\section*{V.2. Model integration}
+\
+\\
+Based on the business needs the following approaches may be applied:
+
+Use model on a remote server and expose it via:
+\begin{itemize}
+	\item remote REST API
+	\begin{itemize}
+		\item can process full media file
+		\item disadvantage: harder to infer in a live stream
+	\end{itemize}
+	\item remote streaming data (e.g. sending data over websockets)
+
+\end{itemize}
+
+Export the model to be used on an end device
+\begin{itemize}
+	\item for tensorflow, the models can be converted to either tflite for Android or coreML for iOS
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	Application flow
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{V.3. Application flow}
+\section*{V.3. Application flow}
+\
+\\
+TBD
 %----------------------------------------------------------------------------------------
 %	Bibliography
 %----------------------------------------------------------------------------------------
