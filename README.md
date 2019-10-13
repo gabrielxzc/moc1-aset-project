@@ -13,7 +13,7 @@ Using data provided by [Freesound](https://freesound.org/) and and [Google Resea
 ### Members
 * Cojocaru Gabriel-Codrin 
 * Dinu Sergiu Andrei Team Leader (Contact: Dinusergiuandrei997@gmail.com)
-* Luncasu Bogdan Cristian
+* Luncasu Bogdan Cristian (Contact: luncasub11@gmail.com)
 * Racovita Madalina-Alina (Contact: madalina.racovita1997@gmail.com)
 * Vintur Cristian
 
