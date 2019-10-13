@@ -1,0 +1,7 @@
+State of the art - lab 2:
+    1) Create parallelizable tasks
+    2) Built LaTeX document skeleton
+    3) Models for sound classification (description of bidirectional LSTM, evaluation metrics)
+    4) Kaggle approaches(describe models used in public kernels)
+    5) Dataset description
+    6) Introduction (competition's description, motivation)
