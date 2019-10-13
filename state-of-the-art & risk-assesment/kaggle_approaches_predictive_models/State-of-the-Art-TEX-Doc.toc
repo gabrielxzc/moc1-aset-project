@@ -1,0 +1,10 @@
+\babel@toc {romanian}{}
+\contentsline {chapter}{Contents}{2}% 
+\contentsline {chapter}{I. Introduction}{3}% 
+\contentsline {section}{I.1. Competition's description}{3}% 
+\contentsline {section}{I.2. Motivation}{3}% 
+\contentsline {chapter}{II. Dataset description}{3}% 
+\contentsline {chapter}{IV. Sound classification predictive models}{4}% 
+\contentsline {section}{IV.1. Models brief description}{5}% 
+\contentsline {section}{IV.2. Evaluation metrics}{5}% 
+\contentsline {chapter}{V. Analyzing Kaggle public kernels}{5}% 

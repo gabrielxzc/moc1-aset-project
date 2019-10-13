@@ -1,0 +1,139 @@
+\documentclass[11pt, a4papper]{report}
+\usepackage{amsthm}
+\usepackage{amssymb, amsmath}
+\usepackage{array}
+\usepackage[english, romanian]{babel}
+\theoremstyle{proposition}
+\usepackage{graphicx}
+\newtheorem{proposition}{Proposition}
+\usepackage{geometry}
+\graphicspath{ {Images/} }
+
+\geometry{
+ a4paper,
+ total={160mm,257mm},
+ left=30mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
+ 
+
+\addto\captionsromanian{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Contents}%
+}
+
+\begin{document}
+\begin{center}
+
+\vspace*{.06\textheight}
+{\scshape\large {``Alexandru Ioan Cuza" University of Iaşi}\par}\vspace{0.3cm} 
+\textsc{\large {Master of computational optimization}}\\[0.3cm] 
+\textbf{\textsc{\large {FACULTY OF COMPUTER SCIENCE }}}\\[1.3cm] 
+
+
+\vspace{0.4cm}
+\textsc{\large {Advanced Software Engineering Techniques 2019 Project}}\\[0.1cm]
+\textsc{\large { - State of the art - }}\\[2.7cm]
+
+\vspace{0.6cm}
+{\LARGE \bfseries {Freesound Audio Tagging 2019}\par}
+\vspace{0.2cm} 
+{\Large \bfseries {Automatically recognize sounds and apply tags of varying natures}\par}
+
+
+\vspace{5.4cm}
+
+\begin{center}
+\textsc{\large Proposed by: Cojocaru Gabriel-Codrin}\\
+\textsc{\large Dinu Sergiu Andrei} \\
+\textsc{\large Luncașu Bogdan Cristian} \\
+\textsc{\large Racoviță Mădălina-Alina} \\
+\textsc{\large Vîntur Cristian} \\
+[3.1cm]
+\textsc{\large Scientific coordinators}: {\textsc{\large PhD Associate Professor Adrian Iftene}} \\
+{\textsc{\large PhD Associate Professor Mihaela Elena Breaban}}
+\end{center}
+\end{center}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	Table of contents
+%----------------------------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{Contents}
+
+\tableofcontents
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	Introduction
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{I. Introduction}
+\chapter*{I. Introduction}
+\
+
+%----------------------------------------------------------------------------------------
+%	Competition's description
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{I.1. Competition's description}
+\section*{I.1. Competition's description}
+\
+
+%----------------------------------------------------------------------------------------
+%	Motivation
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{I.2. Motivation}
+\section*{I.2. Motivation}
+\
+
+%----------------------------------------------------------------------------------------
+%	Dataset description
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{II. Dataset description}
+\chapter*{II. Dataset description}
+\
+
+%----------------------------------------------------------------------------------------
+%	Sound classification predictive models
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{IV. Sound classification predictive models}
+\chapter*{IV. Sound classification predictive models}
+\
+
+%----------------------------------------------------------------------------------------
+%	Models brief description
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{IV.1. Models brief description}
+\section*{IV.1. Models brief description}
+\
+
+%----------------------------------------------------------------------------------------
+%	Evaluation metrics
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{IV.2. Evaluation metrics}
+\section*{IV.2. Evaluation metrics}
+\
+
+
+%----------------------------------------------------------------------------------------
+%	Kaggle approaches
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{V. Analyzing Kaggle public kernels}
+\chapter*{V. Analyzing Kaggle public kernels}
+\
+
+
+
+
+\end{document}
