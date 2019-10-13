@@ -19,4 +19,8 @@
 \contentsline {section}{IV.1. Models brief description}{9}% 
 \contentsline {subsection}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}{9}% 
 \contentsline {section}{IV.2. Evaluation metric}{11}% 
-\contentsline {chapter}{Bibliography}{12}% 
+\contentsline {chapter}{V. Application prototype}{12}% 
+\contentsline {section}{V.1. Use cases}{13}% 
+\contentsline {section}{V.2. Model integration}{13}% 
+\contentsline {section}{V.3. Application flow}{13}% 
+\contentsline {chapter}{Bibliography}{14}% 

@@ -1,0 +1,3 @@
+State of the art - lab 2:
+    1) Define use cases
+    2) ideas for integrating the model
