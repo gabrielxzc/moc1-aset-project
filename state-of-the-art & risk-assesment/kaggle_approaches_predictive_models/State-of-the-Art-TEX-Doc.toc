@@ -14,8 +14,9 @@
 \contentsline {section}{II.5. Test set}{7}% 
 \contentsline {section}{II.6. Files}{7}% 
 \contentsline {section}{II.7. Columns}{7}% 
-\contentsline {chapter}{IV. Sound classification predictive models}{7}% 
-\contentsline {section}{IV.1. Models brief description}{8}% 
-\contentsline {section}{IV.2. Evaluation metrics}{8}% 
-\contentsline {chapter}{V. Analyzing Kaggle public kernels}{8}% 
-\contentsline {chapter}{Bibliography}{9}% 
+\contentsline {section}{II.8. Dataset problems}{7}% 
+\contentsline {chapter}{IV. Sound classification predictive models}{8}% 
+\contentsline {section}{IV.1. Models brief description}{9}% 
+\contentsline {section}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}{9}% 
+\contentsline {section}{IV.2. Evaluation metric}{11}% 
+\contentsline {chapter}{Bibliography}{12}% 

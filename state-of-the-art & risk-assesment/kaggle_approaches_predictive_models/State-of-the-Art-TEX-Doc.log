@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.22)  13 OCT 2019 16:26
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.22)  13 OCT 2019 18:15
 entering extended mode
 **./State-of-the-Art-TEX-Doc.tex
 (State-of-the-Art-TEX-Doc.tex
@@ -487,20 +487,20 @@ LaTeX Warning: Unused global option(s):
 (State-of-the-Art-TEX-Doc.aux)
 \openout1 = `State-of-the-Art-TEX-Doc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -540,7 +540,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
-(Font)              using `TU/lmr/bx/n' instead on input line 85.
+(Font)              using `TU/lmr/bx/n' instead on input line 87.
 
 [1
 
@@ -569,70 +569,115 @@ File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 File: Images/competiton-description.png Graphic file (type bmp)
 <Images/competiton-description.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--150
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--153
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 
  []
 
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--168
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 217--219
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 222--224
 
  []
 
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 233--235
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 280--282
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--294
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
 
  []
 
-[7] [8
 
-] [9
+Underfull \hbox (badness 10000) in paragraph at lines 353--356
+
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
+
+ []
+
+
+("C:\Users\user\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstlang1.s
+ty"
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+) [9
 
 ]
-Overfull \hbox (36.21547pt too wide) in paragraph at lines 390--391
+File: Images/LSTM.png Graphic file (type bmp)
+<Images/LSTM.png>
+ [10]
+File: Images/architecture-bidirect-LSTM.png Graphic file (type bmp)
+<Images/architecture-bidirect-LSTM.png>
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--468
+
+ []
+
+[12]
+Overfull \hbox (36.21547pt too wide) in paragraph at lines 500--501
 []\TU/lmr/bx/n/10.95 Google’s AudioSet Ontology\TU/lmr/m/n/10.95 : \TU/lmr/m/it
 /10.95 https://research.google.com/audioset////////ontology/index.html 
  []
 
-[10
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--512
+\TU/lmr/m/it/10.95 https://scikit-learn.org/stable/modules/model_evaluation.htm
+l#label-ranking-average-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--515
+\TU/lmr/m/it/10.95 https://www.kaggle.com/carlolepelaars/bidirectional-lstm-for
+-audio-labeling-with-
+ []
+
+[13
 
 ] (State-of-the-Art-TEX-Doc.aux)
 
@@ -640,12 +685,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 7889 strings out of 427748
- 111256 string characters out of 3147200
- 419913 words of memory out of 3000000
- 11753 multiletter control sequences out of 15000+200000
- 16972 words of font info for 79 fonts, out of 3000000 for 9000
+ 8115 strings out of 427748
+ 113847 string characters out of 3147200
+ 427913 words of memory out of 3000000
+ 11972 multiletter control sequences out of 15000+200000
+ 16988 words of font info for 81 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 42i,9n,40p,663b,291s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,9n,42p,886b,1093s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on State-of-the-Art-TEX-Doc.pdf (10 pages).
+Output written on State-of-the-Art-TEX-Doc.pdf (13 pages).

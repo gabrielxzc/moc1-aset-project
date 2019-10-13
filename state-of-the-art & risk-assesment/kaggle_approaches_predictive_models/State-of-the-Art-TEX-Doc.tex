@@ -71,10 +71,12 @@
 
  
 
-\addto\captionsromanian{% Replace "english" with the language you use
+\addto\captionsromanian{
   \renewcommand{\contentsname}%
     {Contents}%
 }
+
+\addto\captionsportuguese{\renewcommand{\refname}{References}}
 
 \begin{document}
 \begin{center}
@@ -342,6 +344,17 @@ Each row of the train\_curated.csv and train\_noisy.csv files contains the follo
 \item \textbf{labels}: the audio classification label(s) (ground truth). Note that the number of labels per clip can be one, eg, Bark or more, eg, "Walk\_and\_footsteps,Slam".
 \end{itemize}
 
+%----------------------------------------------------------------------------------------
+%	Dataset problems
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{II.8. Dataset problems}
+\section*{II.8. Dataset problems}
+
+Detected corrupted files in the curated train set
+The following 5 audio files in the curated train set have a wrong label, due to a bug in the file renaming process: \textbf{f76181c4.wav}, \textbf{77b925c2.wav}, \textbf{6a1f682a.wav}, \textbf{c7db12aa.wav}, \textbf{7752cc8a.wav}
+\\
+
+The audio file \textbf{1d44b0bd.wav} in the curated train set was found to be corrupted (contains no signal) due to an error in format conversion.
 
 %----------------------------------------------------------------------------------------
 %	Sound classification predictive models
@@ -356,25 +369,122 @@ Each row of the train\_curated.csv and train\_noisy.csv files contains the follo
 %	Models brief description
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{IV.1. Models brief description}
-\section*{IV.1. Models brief description}
+\section*{IV.1. Models brief description from different Kaggle approaches}
 \
 
+\textbf{Kaggle} \cite{9} is an online community of data scientists and machine learners. Since Kaggle allows users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges, it \textbf{can be used also as a source of inspiration when solving different tasks machine learning related}. We extracted some of the predictive models that we have found in the public kernels that were attached to the subject competition.
+
 %----------------------------------------------------------------------------------------
-%	Evaluation metrics
+%	Bidirectional LSTM for audio labeling with Keras
 %----------------------------------------------------------------------------------------
-\addcontentsline{toc}{section}{IV.2. Evaluation metrics}
-\section*{IV.2. Evaluation metrics}
+\addcontentsline{toc}{section}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}
+\subsection*{IV.1.1. Bidirectional LSTM for audio labeling with Keras}
 \
 
+\textbf{Long short-term memory (LSTM)} is an artificial \textbf{recurrent neural network (RNN)} architecture used in the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can not only process single data points (such as images), but also entire sequences of data (such as speech or video). For example, LSTM is applicable to tasks such as \textbf{unsegmented, connected handwriting recognition or speech recognition}. \textbf{LSTM}in its core, \textit{preserves information from inputs that has already passed through it using the hidden state}.
+\\
 
-%----------------------------------------------------------------------------------------
-%	Kaggle approaches
-%----------------------------------------------------------------------------------------
+\textbf{Unidirectional LSTM} only \textbf{preserves information of the past} because the only inputs it has seen are from the past. Using \textbf{bidirectional} will \textbf{run your inputs in two ways, one from past to future and one from future to past} and what differs this approach from unidirectional is that \textbf{in the LSTM that runs backwards you preserve information from the future} and using the two hidden states combined you are able in any point in time to preserve information from both past and future.
+\\
 
+What they are suited for is a very complicated question but BiLSTMs show very good results as they can understand context better, but this can be explain through a simple example. Lets say we try to predict the next word in a sentence, on a high level what a unidirectional LSTM will see is:
+\vspace{0.5cm}
+\begin{lstlisting}[language=Python]
+The boys went to ....
+\end{lstlisting}
+\vspace{0.5cm}
 
-\addcontentsline{toc}{chapter}{V. Analyzing Kaggle public kernels}
-\chapter*{V. Analyzing Kaggle public kernels}
+And will try to predict the next word only by this context, with bidirectional LSTM you will be able to see information further down the road for example
+
+\vspace{0.5cm}
+
+\begin{lstlisting}[language=Python]
+# Forward LSTM:
+
+The boys went to ...
+
+# Backward LSTM:
+
+... and then they got out of the pool
+\end{lstlisting}
+\vspace{0.5cm}
+
+You can see that using the information from the future it could be easier for the network to understand what the next word is. 
+
+\begin{center}
+\includegraphics[width=16cm,height=13cm,keepaspectratio]{LSTM.png}
+\end{center}
+\begin{center}
+\textbf{Fig. IV.1.1.a}: \textit{Overview LSTM}
+\end{center}
+
+In a public Kaggle kernel  \cite{8} it was used the following architecture for the \textbf{Freesound classification problem} inspired from an article named \textit{Convolutional RNN: an Enhanced Model for
+Extracting Features from Sequential Data} \cite{11}.
+%\vspace{0.5cm}
+
+\begin{lstlisting}[language=Python]
+# Neural network model
+input_shape = (636,128)
+optimizer = Adam(0.005, beta_1=0.1, beta_2=0.001, amsgrad=True)
+n_classes = 80
+
+model = Sequential()
+model.add(Bidirectional(CuDNNLSTM(256, return_sequences=True),
+	  input_shape=input_shape))
+model.add(Attention(636))
+model.add(Dropout(0.2))
+model.add(Dense(400))
+model.add(ELU())
+model.add(Dropout(0.2)) 
+model.add(Dense(n_classes, activation='softmax'))
+model.compile(loss='categorical_crossentropy',
+              optimizer=optimizer,
+              metrics=['acc'])
+\end{lstlisting}
 \
+% \vspace{0.5cm}
+
+Another likely model that develops a biird sound classification problem and uses bidirectional
+LSTM neural networks had the following architecture:
+\begin{center}
+\includegraphics[width=16cm,height=11cm,keepaspectratio]{architecture-bidirect-LSTM.png}
+\end{center}
+\begin{center}
+\textbf{Fig. IV.1.1}: \textit{Architecture bidirectional LSTM. \cite{10}}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	Evaluation metric
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{IV.2. Evaluation metric}
+\section*{IV.2. Evaluation metric}
+\
+
+The task consists of \textbf{predicting the audio labels (tags) for every test clip}. Some test clips bear one label while others bear several labels. The predictions are to be done at the clip level, i.e., no start/end timestamps for the sound events are required.
+\\
+
+The primary competition metric will be \textbf{label-weighted label-ranking average precision} \cite{7}(lwlrap, pronounced "Lol wrap"). This \textbf{measures the average precision of retrieving a ranked list of relevant labels} for each test clip (i.e., the system ranks all the available labels, then the precisions of the ranked lists down to each true label are averaged). This is a generalization of the mean reciprocal rank measure for the case where there can be multiple true labels per test item. The novel "label-weighted" part means that the overall score is the average over all the labels in the test set, where each label receives equal weight (by contrast, plain lrap gives each test item equal weight, thereby discounting the contribution of individual labels when they appear on the same item as multiple other labels).
+\\
+
+The formula for label-ranking average precision (LRAP) is as follows:
+\begin{equation}
+LRAP(y, \widehat{f}) = \frac{1}{n_{samples}}\sum\limits_{i=0}^{n_{samples}-1}\frac{1}{\left\lVert y_i\right\rVert_0} \sum\limits_{j:y_{ij}=1} \frac{|\mathcal{L}_{ij}|}{rank_{ij}}
+\end{equation}
+
+\begin{lstlisting}[language=Python]
+def calculate_overall_lwlrap_sklearn(truth, scores):
+    """Calculate the overall lwlrap using sklearn.metrics.lrap."""
+    # sklearn doesn't correctly apply weighting to samples with no labels
+    # so just skip them.
+    sample_weight = np.sum(truth > 0, axis=1)
+    nonzero_weight_sample_indices = np.flatnonzero(sample_weight > 0)
+    overall_lwlrap = label_ranking_average_precision_score(
+        truth[nonzero_weight_sample_indices, :] > 0, 
+        scores[nonzero_weight_sample_indices, :], 
+        sample_weight=sample_weight[nonzero_weight_sample_indices])
+    return overall_lwlrap
+\end{lstlisting}
+
 
 %----------------------------------------------------------------------------------------
 %	Bibliography
@@ -396,6 +506,18 @@ Each row of the train\_curated.csv and train\_noisy.csv files contains the follo
 \bibitem[5]{5} Frederic Font, Gerard Roma, and Xavier Serra. \textbf{"Freesound technical demo."} Proceedings of the 21st ACM international conference on Multimedia, 2013. https://freesound.org
 
 \bibitem[6]{6} Bart Thomee, David A. Shamma, Gerald Friedland, Benjamin Elizalde, Karl Ni, Douglas Poland, Damian Borth, and Li-Jia Li, YFCC100M: \textbf{The New Data in Multimedia Research}, Commun. ACM, 59(2):64–73, January 2016
+
+\bibitem[7]{7} \textbf{LRAP Python}: \\
+ \textit{https://scikit-learn.org/stable/modules/model\_evaluation.html\#label-ranking-average-precision}
+ 
+\bibitem[8]{8} \textbf{Bidirectional LSTM for audio labeling with Keras}: \\
+\textit{https://www.kaggle.com/carlolepelaars/bidirectional-lstm-for-audio-labeling-with-keras\#Birectional-LSTM-model-for-audio-labeling-with-Keras}
+
+\bibitem[9]{9} \textbf{About Kaggle}: \textit{https://en.wikipedia.org/wiki/Kaggle}
+
+\bibitem[10]{10} \textbf{Bird sound classification using a bidirectional LSTM}, Lukas Muller and Mario Marti: \textit{http://ceur-ws.org/Vol-2125/paper\_134.pdf}
+
+\bibitem[11]{11} \textbf{Convolutional RNN: an Enhanced Model for Extracting Features from Sequential Data}: \textit{https://arxiv.org/pdf/1602.05875v3.pdf}
 \end{thebibliography}
 
 \end{document}
