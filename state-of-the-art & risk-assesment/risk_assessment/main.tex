@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\title{Risk assessment}
+\author{cristian.vintur }
+\date{October 2019}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular}{ | C{2.5cm} | C{3cm}| C{1.5cm} | C{1.5cm} | C{3cm} | } 
+ \hline
+ Risk type & Risk details & Likelihood & Severity & Mitigation measures \\ 
+ \hline
+ Requirements & Requirements will be added in the middle of the project & Probable & Moderate & Brainstorm as many variants of the application as possible and keep the best one \\
+ \hline
+ Schedule & Not all components will be done in time & Possible & Serious & Evaluate how difficult each component will be and choose only those that can be finished \\
+ \hline
+ Performance & The classification model will perform poorly & Possible & Serious / Major & Read from various sources of what other did \\
+ \hline
+ Organizational & Bad distribution of tasks. Two people doing the same thing independently & Unlikely & Moderate & Organizing tasks on \textit{trello} and occasional meetings to discuss the current state of the project \\
+ \hline
+ System architecture & Choose the wrong architecture for the application & Possible & Serious & Read other architectures used in solving the same problem and create something similar \\
+ \hline
+ Resources & Personal laptops not powerful enough to train the model & Possible / Probable & Major & Consider using cloud solutions to train the model \\
+ \hline
+\end{tabular}
+\end{center}
+
+\end{document}
