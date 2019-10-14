@@ -552,7 +552,30 @@ Export the model to be used on an end device
 \section*{V.3. Application flow}
 \
 \\
-TBD
+\begin{center}
+	\includegraphics[width=16cm,height=13cm,keepaspectratio]{application-flow.jpg}
+\end{center}
+\begin{center}
+	\textbf{Fig. V.3.1}: \textit{Application flow overview}
+\end{center}
+
+Video processing flow
+
+\begin{enumerate}
+	\item Upload video via web app
+	\item Send video to processor service
+	\item Index extracted metadata into ElasticSearch
+	\item Persist video in a blob/ on disk
+\end{enumerate}
+
+Video indexer flow
+
+\begin{enumerate}
+	\item Search for videos using certain keywords
+	\item Retrieve relevant metadata from ElasticSearch
+	\item Construct relevant list of videos that will be send to the user
+\end{enumerate}
+
 %----------------------------------------------------------------------------------------
 %	Bibliography
 %----------------------------------------------------------------------------------------
