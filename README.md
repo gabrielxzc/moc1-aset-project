@@ -11,17 +11,20 @@ Using data provided by [Freesound](https://freesound.org/) and and [Google Resea
 ## Team
 
 ### Members
-* Cojocaru Gabriel-Codrin (Contact: codrincojocaru@yahoo.com)
-* Dinu Sergiu Andrei Team Leader (Contact: Dinusergiuandrei997@gmail.com)
-* Luncasu Bogdan Cristian (Contact: luncasub11@gmail.com)
-* Racovita Madalina-Alina (Contact: madalina.racovita1997@gmail.com)
-* Vintur Cristian
+
+- Cojocaru Gabriel-Codrin - codrincojocaru@yahoo.com
+- Dinu Sergiu Andrei, Team Leader - Dinusergiuandrei997@gmail.com
+- Luncasu Bogdan Cristian - luncasub11@gmail.com
+- Racovita Madalina-Alina - madalina.racovita1997@gmail.com
+- Vintur Cristian
 
 ### Coordinators
-* Breaban Mihaela
-* Iftene Adrian
+
+- Breaban Elena Mihaela
+- Iftene Adrian
 
 ## Additional resources
-* [Trello](https://trello.com/b/phl7r8hL/moc1-aset-project)
-* [Kaggle competition](https://www.kaggle.com/c/freesound-audio-tagging-2019)
-* [MOC1 ASET](https://profs.info.uaic.ro/~adiftene/Scoala/2020/ASET/index.html)
+
+- [Trello](https://trello.com/b/phl7r8hL/moc1-aset-project)
+- [Kaggle competition](https://www.kaggle.com/c/freesound-audio-tagging-2019)
+- [MOC1 ASET](https://profs.info.uaic.ro/~adiftene/Scoala/2020/ASET/index.html)

@@ -22,6 +22,7 @@
 \DeclareMathOperator*{\limi}{lim}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{algpseudocode}
+\usepackage{tabularx}
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
@@ -78,6 +79,8 @@
 
 \addto\captionsportuguese{\renewcommand{\refname}{References}}
 
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
 \begin{document}
 \begin{center}
 
@@ -92,7 +95,7 @@
 \textsc{\large { - State of the art - }}\\[2.7cm]
 
 \vspace{0.6cm}
-{\LARGE \bfseries {Freesound Audio Tagging 2019}\par}
+{\LARGE \bfseries {Audio Tagging}\par}
 \vspace{0.2cm} 
 {\Large \bfseries {Automatically recognize sounds and apply tags of varying natures}\par}
 
@@ -361,15 +364,15 @@ The audio file \textbf{1d44b0bd.wav} in the curated train set was found to be co
 %----------------------------------------------------------------------------------------
 
 
-\addcontentsline{toc}{chapter}{IV. Sound classification predictive models}
-\chapter*{IV. Sound classification predictive models}
+\addcontentsline{toc}{chapter}{III. Sound classification predictive models}
+\chapter*{III. Sound classification predictive models}
 \
 
 %----------------------------------------------------------------------------------------
 %	Models brief description
 %----------------------------------------------------------------------------------------
-\addcontentsline{toc}{section}{IV.1. Models brief description}
-\section*{IV.1. Models brief description from different Kaggle approaches}
+\addcontentsline{toc}{section}{III.1. Models brief description}
+\section*{III.1. Models brief description from different Kaggle approaches}
 \
 
 \textbf{Kaggle} \cite{9} is an online community of data scientists and machine learners. Since Kaggle allows users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges, it \textbf{can be used also as a source of inspiration when solving different tasks machine learning related}. We extracted some of the predictive models that we have found in the public kernels that were attached to the subject competition.
@@ -377,11 +380,11 @@ The audio file \textbf{1d44b0bd.wav} in the curated train set was found to be co
 %----------------------------------------------------------------------------------------
 %	Bidirectional LSTM for audio labeling with Keras
 %----------------------------------------------------------------------------------------
-\addcontentsline{toc}{subsection}{IV.1.1. Bidirectional LSTM for audio labeling with Keras}
-\subsection*{IV.1.1. Bidirectional LSTM for audio labeling with Keras}
+\addcontentsline{toc}{subsection}{III.1.1. Bidirectional LSTM for audio labeling with Keras}
+\subsection*{III.1.1. Bidirectional LSTM for audio labeling with Keras}
 \
 
-\textbf{Long short-term memory (LSTM)} is an artificial \textbf{recurrent neural network (RNN)} architecture used in the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can not only process single data points (such as images), but also entire sequences of data (such as speech or video). For example, LSTM is applicable to tasks such as \textbf{unsegmented, connected handwriting recognition or speech recognition}. \textbf{LSTM}in its core, \textit{preserves information from inputs that has already passed through it using the hidden state}.
+\textbf{Long short-term memory (LSTM)} is an artificial \textbf{recurrent neural network (RNN)} architecture used in the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can not only process single data points (such as images), but also entire sequences of data (such as speech or video). For example, LSTM is applicable to tasks such as \textbf{unsegmented, connected handwriting recognition or speech recognition}. \textbf{LSTM} in its core, \textit{preserves information from inputs that has already passed through it using the hidden state}.
 \\
 
 \textbf{Unidirectional LSTM} only \textbf{preserves information of the past} because the only inputs it has seen are from the past. Using \textbf{bidirectional} will \textbf{run your inputs in two ways, one from past to future and one from future to past} and what differs this approach from unidirectional is that \textbf{in the LSTM that runs backwards you preserve information from the future} and using the two hidden states combined you are able in any point in time to preserve information from both past and future.
@@ -415,7 +418,7 @@ You can see that using the information from the future it could be easier for th
 \includegraphics[width=16cm,height=13cm,keepaspectratio]{LSTM.png}
 \end{center}
 \begin{center}
-\textbf{Fig. IV.1.1.a}: \textit{Overview LSTM}
+\textbf{Fig. III.1.1.a}: \textit{Overview LSTM}
 \end{center}
 
 In a public Kaggle kernel  \cite{8} it was used the following architecture for the \textbf{Freesound classification problem} inspired from an article named \textit{Convolutional RNN: an Enhanced Model for
@@ -444,20 +447,20 @@ model.compile(loss='categorical_crossentropy',
 \
 % \vspace{0.5cm}
 
-Another likely model that develops a biird sound classification problem and uses bidirectional
+Another likely model that develops a bird sound classification problem and uses bidirectional
 LSTM neural networks had the following architecture:
 \begin{center}
 \includegraphics[width=16cm,height=11cm,keepaspectratio]{architecture-bidirect-LSTM.png}
 \end{center}
 \begin{center}
-\textbf{Fig. IV.1.1}: \textit{Architecture bidirectional LSTM. \cite{10}}
+\textbf{Fig. III.1.1}: \textit{Architecture bidirectional LSTM. \cite{10}}
 \end{center}
 
 %----------------------------------------------------------------------------------------
 %	Evaluation metric
 %----------------------------------------------------------------------------------------
-\addcontentsline{toc}{section}{IV.2. Evaluation metric}
-\section*{IV.2. Evaluation metric}
+\addcontentsline{toc}{section}{III.2. Evaluation metric}
+\section*{III.2. Evaluation metric}
 \
 
 The task consists of \textbf{predicting the audio labels (tags) for every test clip}. Some test clips bear one label while others bear several labels. The predictions are to be done at the clip level, i.e., no start/end timestamps for the sound events are required.
@@ -484,6 +487,106 @@ def calculate_overall_lwlrap_sklearn(truth, scores):
         sample_weight=sample_weight[nonzero_weight_sample_indices])
     return overall_lwlrap
 \end{lstlisting}
+
+%----------------------------------------------------------------------------------------
+%	The environmental sound classification problem
+%----------------------------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{IV. State of the art}
+\chapter*{IV. State of the art}
+
+\addcontentsline{toc}{section}{IV.1. Problem description}
+\section*{IV.1. Problem description}
+
+The environmental sound classification problem can come in many different shapes, from having to classify short audio files with a label from a specified set to having to tag live audio streaming with one or multiple labels.
+\\
+
+Automatic environmental sound classification or tagging is a growing area of research. Work done in this area is comparatively scarce with work done in related audio fields such as speech and music. Applications are numerous and include multimedia indexing and retrieval, environmental sounds subtitles, assisting deaf individuals or even monitoring illegal deforestation. A very interesting project regarding this last use case is created by a non-profit organization called Delta Analytics. They helped build a system where a lot of old mobile phones are attached to trees in rain forests which listen to chainsaw noises. Their role is to identify when a chainsaw is being used and alert rangers who can stop illegal deforestation \cite{13}.
+\\
+
+Because of the recent success in image classification, the question that raises is: can we bring techniques used in image classification to sound classification by representing sound in various image formats?
+
+\addcontentsline{toc}{section}{IV.2. Short audio files classification}
+\section*{IV.2. Short audio files classification}
+
+\addcontentsline{toc}{subsection}{IV.2.1. Problem statement}
+\subsection*{IV.2.1. Problem statement}
+
+Classify environmental sounds with focus on identification of particular urban sounds. Given an audio sample of a few seconds duration determine if it contains one of the target urban sounds \cite{12}.
+
+\addcontentsline{toc}{subsection}{IV.2.2. Dataset description}
+\subsection*{IV.2.2. Dataset description}
+
+The dataset is called Urbansound8K and contains 8732 sound excerpts (under 4s) of urban sounds from 10 classes, which are:
+
+\begin{itemize}
+\item Air Conditioner
+\item Car Horn
+\item Children Playing
+\item Dog bark
+\item Drilling
+\item Engine Idling
+\item Gun Shot
+\item Jackhammer
+\item Siren
+\item Street Music
+\end{itemize}
+
+By taking a closer look to the dataset, the following observation can be made: it's tricky to visualize the difference between some sounds, especially the continuous ones like jackhammer and engine idling.
+
+\begin{center}
+\includegraphics[scale=0.6]{sound-waves.png}
+\end{center}
+\begin{center}
+\textbf{Fig. }: \textit{Visualization of sound amplitude with respect to time}
+\end{center}
+
+A deeper dive into the data show that: most samples have 2 audio channels with a few having just 1 channel, sample rate varies from 8kHz to 48kHZ and bit depth also varies from 4bit to 32bit which leads to requiring a data normalization step.
+
+\addcontentsline{toc}{subsection}{IV.2.3. Proposed solution}
+\subsection*{IV.2.3. Proposed solution}
+The proposed solution involves mapping the audio files, after the normalization step, to a visual representation. Spectrograms are a useful technique for visualizing the spectrum of frequencies of a sound and how they vary during a very short period of time. A similar technique known as mel-spectrogram will be used for this case. The main difference is that a spectrogram uses a linear spaced frequency scale (so each frequency bin is spaced an equal number of Hertz apart), whereas a mel-spectrogram uses a quasi-logarithmic spaced frequency scale, which is more similar to how the human auditory system processes sounds.
+
+\begin{center}
+\includegraphics[scale=0.8]{sound-representation.png}
+\end{center}
+\begin{center}
+\textbf{Fig. }: \textit{Spectrogram and mel-spectrogram}
+\end{center}
+
+The problem will be solved by using deep learning on the visual representation of the audio file. In this case a Convolutional Neural Network (CNN) will be used. The model used is a sequantial one consisting of 4 Conv2D convolution layers with the final output being a dense layer. The output layer will have 10 nodes which matches the number of possible classifications.
+
+\addcontentsline{toc}{subsection}{IV.2.4. Results}
+\subsection*{IV.2.4 Results}
+The trained model obtained a Training accuracy of 98.19\% and a Testing accuracy of 91.92\%.
+
+\addcontentsline{toc}{section}{IV.3. Tagging longer audio files}
+\section*{IV.3. Tagging longer audio files}
+
+By providing a solution to solving the short audio files tagging problem we can extend it to work on longer audio files. The idea behind this extension is to divide the audio into smaller parts, transform these parts into mel-spectrograms and feed them into a more complex network that will be able to provide the correct label(s).
+
+\addcontentsline{toc}{section}{IV.4. State of the art}
+\section*{IV.4. State of the art solution}
+State of the art solution to solving this problem is deep learning. By dividing the audio and transforming it into mel-spectrograms \cite{14} we can use some of the success of image classification and bring it to audio classification. Just applying image classification on mel-spectrograms doesn't work because sound in form of mel-spectrograms doesn't have the same properties as an image but by adapting the network to the new context we can obtain a solution to solving this problem.
+
+\addcontentsline{toc}{section}{IV.5. Relevant articles}
+\section*{IV.5. Relevant articles}
+
+\begin{itemize}
+\item AUDIO TAGGING WITH NOISY LABELS AND MINIMAL SUPERVISION - \\ \textit{https://arxiv.org/pdf/1906.02975.pdf}
+\item Convolutional RNN: an Enhanced Model for
+Extracting Features from Sequential Data - \textit{https://arxiv.org/pdf/1602.05875v3.pdf}
+\end{itemize}
+
+\addcontentsline{toc}{section}{IV.6. Relevant articles}
+\section*{IV.6. Relevant links}
+
+\begin{itemize}
+\item Kaggle competition 1st place solution - \textit{https://github.com/lRomul/argus-freesound}
+\item Kaggle competition 2nd place solution - \textit{https://www.kaggle.com/c/freesound-audio-tagging-2019/discussion/97815}
+\item Kaggle competition 3rd place solution - \textit{https://www.kaggle.com/c/freesound-audio-tagging-2019/discussion/97926}
+\end{itemize}
+
 
 %----------------------------------------------------------------------------------------
 %	Application prototype
@@ -577,6 +680,35 @@ Video indexer flow
 \end{enumerate}
 
 %----------------------------------------------------------------------------------------
+%	Risk assessment
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{VI. Risk assessment}
+\chapter*{VI. Risk assessment}
+
+\begin{center}
+\begin{tabular}{ | C{2.5cm} | C{3cm}| C{1.5cm} | C{1.5cm} | C{3cm} | } 
+ \hline
+ Risk type & Risk details & Likelihood & Severity & Mitigation measures \\ 
+ \hline
+ Requirements & Requirements will be added in the middle of the project & Probable & Moderate & Brainstorm as many variants of the application as possible and keep the best one \\
+ \hline
+ Schedule & Not all components will be done in time & Possible & Serious & Evaluate how difficult each component will be and choose only those that can be finished \\
+ \hline
+ Performance & The classification model will perform poorly & Possible & Serious / Major & Read from various sources of what other did \\
+ \hline
+ Organizational & Bad distribution of tasks. Two people doing the same thing independently & Unlikely & Moderate & Organizing tasks on \textit{trello} and occasional meetings to discuss the current state of the project \\
+ \hline
+ System architecture & Choose the wrong architecture for the application & Possible & Serious & Read other architectures used in solving the same problem and create something similar \\
+ \hline
+ Resources & Personal laptops not powerful enough to train the model & Possible / Probable & Major & Consider using cloud solutions to train the model \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+%----------------------------------------------------------------------------------------
 %	Bibliography
 %----------------------------------------------------------------------------------------
 
@@ -587,7 +719,7 @@ Video indexer flow
 \bibitem[1]{1} \textbf{Competition's overview from Kaggle platform}: \\
 \textit{https://www.kaggle.com/c/freesound-audio-tagging-2019/overview}
 
-\bibitem[2]{2} \textbf{Google’s AudioSet Ontology}: \textit{https://research.google.com/audioset////////ontology/index.html}
+\bibitem[2]{2} \textbf{Google’s AudioSet Ontology}: \textit{https://research.google.com/audioset/ontology/index.html}
 
 \bibitem[3]{3} Eduardo Fonseca, Jordi Pons, Xavier Favory, Frederic Font, Dmitry Bogdanov, Andres Ferraro, Sergio Oramas, Alastair Porter, and Xavier Serra. \textbf{"Freesound Datasets: A Platform for the Creation of Open Audio Datasets."} In Proceedings of the International Conference on Music Information Retrieval, 2017. [PDF]
 
@@ -608,6 +740,12 @@ Video indexer flow
 \bibitem[10]{10} \textbf{Bird sound classification using a bidirectional LSTM}, Lukas Muller and Mario Marti: \textit{http://ceur-ws.org/Vol-2125/paper\_134.pdf}
 
 \bibitem[11]{11} \textbf{Convolutional RNN: an Enhanced Model for Extracting Features from Sequential Data}: \textit{https://arxiv.org/pdf/1602.05875v3.pdf}
+
+\bibitem[12]{12} \textbf{"Classifying Urban sounds using Deep Learning"}, Mike Smales: \textit{https://github.com/mikesmales/Udacity-ML-Capstone/blob/master/Report/Report.pdf}
+
+\bibitem[13]{13} \textbf{"Data Science for Good: Stopping Illegal Deforestat"}, Sara Hooker, Sean McPherson: \textit{https://mlconf.com/sessions/data-science-for-good-stopping-illegal-deforestat-2/}
+
+\bibitem[14]{14} Eduardo Fonseca, Manoj Plakal, Frederic Font, Daniel P. W. Ellis, Xavier Serra.\\ \textbf{"AUDIO TAGGING WITH NOISY LABELS AND MINIMAL SUPERVISION"} in Detection and Classification of Acoustic Scenes and Events 2019 [PDF]
 \end{thebibliography}
 
 \end{document}

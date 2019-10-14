@@ -1,1 +1,6 @@
-* pregatirea mediului de lucru (github, trello)
+State of the art - lab 2:
+  * prepare workspace (github, trello)
+  * create parallelizable tasks
+  * analyze the environmental sound classification problem
+  * present the state of the art solutions to solving this problem
+  * link relevant articles and resources
