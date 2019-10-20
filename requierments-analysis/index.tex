@@ -1,0 +1,215 @@
+\documentclass[11pt, a4papper]{report}
+
+\usepackage{amsthm}
+\usepackage{amssymb, amsmath}
+\usepackage{array}
+\usepackage{bm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{colortbl}
+\usepackage[svgnames]{xcolor}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{subcaption}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+
+\DeclareMathOperator*{\minimize}{argmin}
+\DeclareMathOperator*{\limi}{lim}
+
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+
+\SetCommentSty{mycommfont}
+
+\SetKwInput{KwInput}{Input}                
+\SetKwInput{KwOutput}{Output}              
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{lemma}{Lemma}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+
+\theoremstyle{proposition}
+\newtheorem{proposition}{Proposition}
+
+ \geometry{
+ a4paper,
+ total={160mm,257mm},
+ left=30mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
+ 
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\renewcommand{\baselinestretch}{1.25}
+ 
+\graphicspath{ {./Images/} }
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\begin{document}
+\begin{center}
+
+\vspace*{.06\textheight}
+{\scshape\large {``Alexandru Ioan Cuza" University of Iaşi}\par}\vspace{0.3cm} 
+\textsc{\large {Master of computational optimization}}\\[0.3cm] 
+\textbf{\textsc{\large {FACULTY OF COMPUTER SCIENCE }}}\\[1.3cm] 
+
+
+\vspace{0.4cm}
+\textsc{\large {Advanced Software Engineering Techniques 2019 Project}}\\[0.1cm]
+\textsc{\large { - Requirements analysis - }}\\[2.7cm]
+
+\vspace{0.6cm}
+{\LARGE \bfseries {Audio Tagging}\par}
+\vspace{0.2cm} 
+{\Large \bfseries {Automatically recognize sounds and apply tags of varying natures}\par}
+
+
+\vspace{4.4cm}
+
+\begin{center}
+\textsc{\large Proposed by: Cojocaru Gabriel-Codrin}\\
+\textsc{\large Dinu Sergiu Andrei} \\
+\textsc{\large Luncașu Bogdan Cristian} \\
+\textsc{\large Racoviță Mădălina-Alina} \\
+\textsc{\large Vîntur Cristian} \\
+[3.1cm]
+\textsc{\large Scientific coordinators}: {\textsc{\large PhD Associate Professor Adrian Iftene}} \\
+{\textsc{\large PhD Associate Professor Mihaela Elena Breaban}}
+\end{center}
+\end{center}
+\newpage
+
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\newpage
+
+\addcontentsline{toc}{chapter}{I. Introduction}
+\chapter*{I. Introduction}
+
+\addcontentsline{toc}{section}{I.1. Application's overview}
+\section*{I.1. Application's overview}
+
+Clink is a web application that specializes in uploading and retrieving audio files. On upload, a number of tags are generated automatically and associated with the given audio file which can then be used for queries.
+
+\addcontentsline{toc}{section}{I.2. Constraints}
+\section*{I.2. Constraints}
+
+Any further described functionality will be guaranteed to work on Google Chrome 77.0.3865 (or newer) running on machines using as operating system Windows 10 build 18362 (or newer) or Ubuntu 18.04.3 (or newer). At the same time the width of the screen used while browsing the application must be at least 1200 pixels. For any other configurations the application is not guaranteed to work as described further.
+
+\addcontentsline{toc}{chapter}{II. Minimum viable product}
+\chapter*{II. Minimum viable product}
+
+\addcontentsline{toc}{section}{II.1. Functionalities}
+\section*{II.1. Functionalities}
+
+Functionalities present in the minimum viable product (MVP) include beeing able to upload, listen or download audio files. On upload, a number of tags will be automatically generated and associated with the given file. A user can also query the existing base of audio files with filters using the tags. An example of a query is 'give me all audio files on the platform that contain bark and applause'. The available tags an user wil be able to choose from are: Accelerating and revving and vroom, Accordion, Acoustic guitar, Applause, Bark, Bass drum, Bass guitar, Bathtub (filling or washing), Bicycle bell, Burping and eructation, Bus, Buzz, Car passing by, Cheering, Chewing and mastication, Child speech and kid speaking, Chink and clink, Chirp and tweet, Church bell, Clapping, Computer keyboard, Crackle, Cricket, Crowd, Cupboard open or close, Cutlery and silverware, Dishes and pots and pans, Drawer open or close, Drip, Electric guitar, Fart, Female singing, Female speech and woman speaking, Fill (with liquid), Finger snapping, Frying (food), Gasp, Glockenspiel, Gong, Gurgling, Harmonica, Hi-hat, Hiss, Keys jangling, Knock, Male singing, Male speech and man speaking, Marimba and xylophone, Mechanical fan, Meow, Microwave oven, Motorcycle, Printer, Purr, Race car and auto racing, Raindrop, Run, Scissors, Screaming, Shatter, Sigh, Sink (filling or washing), Skateboard, Slam, Sneeze, Squeak, Stream,Strum, Tap, Tick-tock, Toilet flush, Traffic noise and roadway noise, Trickle and dribble, Walk and footsteps, Water tap and faucet, Waves and surf, Whispering, Writing, Yell, Zipper (clothing).
+
+
+\addcontentsline{toc}{section}{II.2. Use cases}
+\section*{II.2. Use cases}
+
+\addcontentsline{toc}{subsection}{II.2.1 Get an audio file tagged}
+\subsection*{II.2.1 Get an audio file tagged}
+
+\begin{enumerate}
+	\item{On opening the application, an user lands on the home page where he can find an upload button}
+	\item{By clicking the upload button he is prompted to select an audio file from his device}
+	\item{After selecting a valid audio file he will see a loader with the progress made on uploading the file}
+	\item{Upon finishing the upload the user will be able to see on the screen the tags associated with his file}
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{II.2.2 Search for an audio file by tags}
+\subsection*{II.2.2 Search for an audio file by tags}
+
+\begin{enumerate}
+	\item{On opening the application, an user lands on the home page where he can find a tags input}
+	\item{The user can start writing the name of a tag into the input and by pressing enter, the tag will be added to the tags filter list}
+	\item{After the tags filter list is complete, the user can click the search button}
+	\item{Upon finishing retrieving the results, the user will be able to see audio files matching the specified filter}
+\end{enumerate}
+
+	
+\addcontentsline{toc}{subsection}{II.2.3 Listen to an audio file on the platform}
+\subsection*{II.2.3 Listen to an audio file on the platform}
+
+\begin{enumerate}
+	\item{By following II.2.2 the user can get a list of audio files matching a set of filters}
+	\item{Each audio file retrieved will have a play button associated on the page}
+	\item{By pressing the play button, the user can listen to the audio file}
+	\item{The user can also press the pause button while an audio file is playing to stop it}
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{II.2.4 Download an audio file from the platform}
+\subsection*{II.2.4 Download an audio file from the platform}
+
+\begin{enumerate}
+	\item{By following II.2.2 the user can get a list of audio files matching a set of filters}
+	\item{Each audio file retrieved will have a download button associated on the page}
+	\item{By pressing the download button the user can download the audio file on his device}
+\end{enumerate}
+
+\addcontentsline{toc}{chapter}{III. Additional features}
+\chapter*{III. Additional features}
+
+\addcontentsline{toc}{section}{III.1. Functionalities}
+\section*{III.1. Functionalities}
+A set of additional features can be added to the MVP based on the time remaining after finishing it. These features include uploading videos, tagging videos from youtube by providing only an url to the video, users beeing able to manually specify when the tagging algorithm is not working properly by adding or flagging tags, an authentication system or generating subtitles for a video based on the generated tags.
+
+\addcontentsline{toc}{section}{III.2. Use cases}
+\section*{III.2. Use cases}
+
+\addcontentsline{toc}{subsection}{III.2.1 Get a video file tagged}
+\subsection*{III.2.1 Get a video file tagged}
+
+\begin{enumerate}
+	\item{An user will be able to follow steps described in II.2.1 but aditionally he will be able to select video files}
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{III.2.2 Get a video from youtube tagged}
+\subsection*{III.2.2 Get a video from youtube tagged}
+
+\begin{enumerate}
+	\item{On opening the application, an user lands on the home page where he can find an input for a youtube url}
+	\item{After writing a valid url to the input specified above, the user will be able to click a tag youtube video button}
+	\item{After clicking the button specified above the user will see a loader with the progress made on tagging the specified video}
+	\item{Upon finishing the user will be able to see the the generated tags on screen}
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{III.2.3 Add or flag tags when the tagging algorithm fails}
+\subsection*{III.2.3 Add or flag tags when the tagging algorithm fails}
+
+\begin{enumerate}
+	\item{After following the steps described above to tag a multimedia file, the user will be able to flag tags outputed by the tagging algorithm as wrong or add new tags the algorithm didn't catch}
+	\item{While browsing other uploaded multimedia files the user can flag tags outputed by the tagging algorithm as wrong or add new tags the algorithm didn't catch}
+\end{enumerate}
+
+\end{document}

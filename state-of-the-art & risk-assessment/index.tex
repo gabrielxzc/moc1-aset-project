@@ -2,7 +2,6 @@
 \usepackage{amsthm}
 \usepackage{amssymb, amsmath}
 \usepackage{array}
-\usepackage[romanian]{babel}
 \usepackage{bm}
 \usepackage{enumerate}
 \usepackage{float}
@@ -68,16 +67,7 @@
 \setcounter{secnumdepth}{4}
 \renewcommand{\baselinestretch}{1.25}
  
-\graphicspath{ {Images/} }
-
- 
-
-\addto\captionsromanian{
-  \renewcommand{\contentsname}%
-    {Contents}%
-}
-
-\addto\captionsportuguese{\renewcommand{\refname}{References}}
+\graphicspath{ {./Images/} }
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 
@@ -144,7 +134,7 @@
 One year ago, \textbf{Freesound} and \textbf{Google’s Machine Perception} hosted an audio tagging competition challenging Kagglers to build a general-purpose auto tagging system. This year they’re back and taking the challenge to the next level with multi-label audio tagging, doubled number of audio categories, and a noisier than ever training set. \cite{1}
 
 \begin{center}
-\includegraphics[width=16.5cm,height=9cm,keepaspectratio]{competiton-description.png}
+\includegraphics[width=16.5cm,height=9cm,keepaspectratio]{competiton-description}
 \end{center}
 
 Here's the background: \textbf{Some sounds are distinct and instantly recognizable, like a baby’s laugh or the strum of a guitar}. Other sounds are difficult to pinpoint. If you close your eyes, could you tell the difference between the sound of a chainsaw and the sound of a blender?
@@ -450,7 +440,7 @@ model.compile(loss='categorical_crossentropy',
 Another likely model that develops a bird sound classification problem and uses bidirectional
 LSTM neural networks had the following architecture:
 \begin{center}
-\includegraphics[width=16cm,height=11cm,keepaspectratio]{architecture-bidirect-LSTM.png}
+\includegraphics[width=16cm,height=11cm,keepaspectratio]{architecture-bidirect-LSTM}
 \end{center}
 \begin{center}
 \textbf{Fig. III.1.1}: \textit{Architecture bidirectional LSTM. \cite{10}}
@@ -656,7 +646,7 @@ Export the model to be used on an end device
 \
 \\
 \begin{center}
-	\includegraphics[width=16cm,height=13cm,keepaspectratio]{application-flow.jpg}
+	\includegraphics[width=16cm,height=13cm,keepaspectratio]{application-flow}
 \end{center}
 \begin{center}
 	\textbf{Fig. V.3.1}: \textit{Application flow overview}
