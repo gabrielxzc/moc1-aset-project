@@ -1,0 +1,7 @@
+Lab 2:
+    - contributions in doc
+Lab 3:
+    - trello management
+        - created class diagrams
+        - created use case diagrams
+    - 2 diagrams
