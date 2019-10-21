@@ -118,12 +118,22 @@
 \addcontentsline{toc}{section}{I.1. Application's overview}
 \section*{I.1. Application's overview}
 
-Clink is a web application that specializes in uploading and retrieving audio files. On upload, a number of tags are generated automatically and associated with the given audio file which can then be used for queries.
+Clink is a web application that specializes in tagging audio files and retrieving them based on tags. On upload, a number of tags are generated automatically and associated with the given audio file which can then be used for queries.
 
 \addcontentsline{toc}{section}{I.2. Constraints}
 \section*{I.2. Constraints}
 
 Any further described functionality will be guaranteed to work on Google Chrome 77.0.3865 (or newer) running on machines using as operating system Windows 10 build 18362 (or newer) or Ubuntu 18.04.3 (or newer). At the same time the width of the screen used while browsing the application must be at least 1200 pixels. For any other configurations the application is not guaranteed to work as described further.
+
+\addcontentsline{toc}{section}{I.3. Actors}
+\section*{I.3. Actors}
+
+\begin{itemize}
+	\item{The end user}
+	\item{The web interface}
+	\item{The tagging algorithm}
+	\item{The files indexer}
+\end{itemize}
 
 \addcontentsline{toc}{chapter}{II. Minimum viable product}
 \chapter*{II. Minimum viable product}
@@ -141,20 +151,20 @@ Functionalities present in the minimum viable product (MVP) include beeing able 
 \subsection*{II.2.1 Get an audio file tagged}
 
 \begin{enumerate}
-	\item{On opening the application, an user lands on the home page where he can find an upload button}
+	\item{On opening the web interface, an end user lands on the main page where he can find an upload button}
 	\item{By clicking the upload button he is prompted to select an audio file from his device}
 	\item{After selecting a valid audio file he will see a loader with the progress made on uploading the file}
-	\item{Upon finishing the upload the user will be able to see on the screen the tags associated with his file}
+	\item{Upon finishing the upload the user will be able to see on the screen the tags associated with his file, given by the tagging algorithm}
 \end{enumerate}
 
 \addcontentsline{toc}{subsection}{II.2.2 Search for an audio file by tags}
 \subsection*{II.2.2 Search for an audio file by tags}
 
 \begin{enumerate}
-	\item{On opening the application, an user lands on the home page where he can find a tags input}
+	\item{On opening the web interface, an end user lands on the main page where he can find a tags input}
 	\item{The user can start writing the name of a tag into the input and by pressing enter, the tag will be added to the tags filter list}
 	\item{After the tags filter list is complete, the user can click the search button}
-	\item{Upon finishing retrieving the results, the user will be able to see audio files matching the specified filter}
+	\item{Upon finishing retrieving the results, using the files indexer, the user will be able to see audio files matching the specified filter}
 \end{enumerate}
 
 	
@@ -182,7 +192,7 @@ Functionalities present in the minimum viable product (MVP) include beeing able 
 
 \addcontentsline{toc}{section}{III.1. Functionalities}
 \section*{III.1. Functionalities}
-A set of additional features can be added to the MVP based on the time remaining after finishing it. These features include uploading videos, tagging videos from youtube by providing only an url to the video, users beeing able to manually specify when the tagging algorithm is not working properly by adding or flagging tags, an authentication system or generating subtitles for a video based on the generated tags.
+A set of additional features can be added to the MVP based on the time remaining after finishing implementing it. These features include uploading videos, tagging videos from youtube by providing only an url to the video, users beeing able to manually specify when the tagging algorithm is not working properly by adding or flagging tags, an authentication system or generating subtitles for a video based on the generated tags.
 
 \addcontentsline{toc}{section}{III.2. Use cases}
 \section*{III.2. Use cases}
@@ -191,17 +201,17 @@ A set of additional features can be added to the MVP based on the time remaining
 \subsection*{III.2.1 Get a video file tagged}
 
 \begin{enumerate}
-	\item{An user will be able to follow steps described in II.2.1 but aditionally he will be able to select video files}
+	\item{An end user will be able to follow steps described in II.2.1 but aditionally he will be able to select video files}
 \end{enumerate}
 
 \addcontentsline{toc}{subsection}{III.2.2 Get a video from youtube tagged}
 \subsection*{III.2.2 Get a video from youtube tagged}
 
 \begin{enumerate}
-	\item{On opening the application, an user lands on the home page where he can find an input for a youtube url}
+	\item{On opening the web interface, an end user lands on the home page where he can find an input for a youtube url}
 	\item{After writing a valid url to the input specified above, the user will be able to click a tag youtube video button}
 	\item{After clicking the button specified above the user will see a loader with the progress made on tagging the specified video}
-	\item{Upon finishing the user will be able to see the the generated tags on screen}
+	\item{Upon finishing, the user will be able to see the the generated tags on screen}
 \end{enumerate}
 
 \addcontentsline{toc}{subsection}{III.2.3 Add or flag tags when the tagging algorithm fails}
