@@ -5,3 +5,8 @@ State of the art - lab 2:
     4) Kaggle approaches(describe models used in public kernels)
     5) Dataset description
     6) Introduction (competition's description, motivation)
+
+Diagrams & requirements analysis - lab 3:
+    1) Sequence diagram - user uploads audio file
+    2) Sequence diagram - user uploads video file
+    
