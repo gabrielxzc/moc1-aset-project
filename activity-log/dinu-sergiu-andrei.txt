@@ -4,4 +4,4 @@ Lab 3:
     - trello management
         - created class diagrams
         - created use case diagrams
-    - 2 diagrams
+    - 3 diagrams
