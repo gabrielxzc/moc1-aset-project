@@ -2,3 +2,6 @@ State of the art - lab 2:
     1) Define use cases
     2) Ideas for integrating the model
     3) Application flow overview
+Lab3 - diagrams:
+    1) Backend class diagram
+    2) High level component diagram
