@@ -13,15 +13,15 @@ Using data provided by [Freesound](https://freesound.org/) and and [Google Resea
 ### Members
 
 - Cojocaru Gabriel-Codrin - codrincojocaru@yahoo.com
-- Dinu Sergiu Andrei, Team Leader - Dinusergiuandrei997@gmail.com
+- Dinu Sergiu Andrei, Team Leader - dinusergiuandrei997@gmail.com
 - Luncasu Bogdan Cristian - luncasub11@gmail.com
 - Racovita Madalina-Alina - madalina.racovita1997@gmail.com
 - Vintur Cristian
 
 ### Coordinators
 
-- Breaban Elena Mihaela
-- Iftene Adrian
+- Conf. dr. Breaban Elena Mihaela
+- Conf. dr. Iftene Adrian
 
 ## Additional resources
 
