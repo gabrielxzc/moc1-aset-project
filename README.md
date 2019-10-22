@@ -28,3 +28,4 @@ Using data provided by [Freesound](https://freesound.org/) and and [Google Resea
 - [Trello](https://trello.com/b/phl7r8hL/moc1-aset-project)
 - [Kaggle competition](https://www.kaggle.com/c/freesound-audio-tagging-2019)
 - [MOC1 ASET](https://profs.info.uaic.ro/~adiftene/Scoala/2020/ASET/index.html)
+- [Image clef](https://www.imageclef.org/)
