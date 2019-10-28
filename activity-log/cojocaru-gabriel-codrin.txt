@@ -5,3 +5,7 @@ State of the art - lab 2:
   * present the state of the art solutions to solving this problem
   * link relevant articles and resources
   * merged work done by everyone
+
+Diagrams & requirements analysis - lab 3:
+  * requirements analysis latex document
+  * front end architecture diagram
