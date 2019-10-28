@@ -4,4 +4,5 @@
 **/*.synctex.gz
 **/*.toc
 /data
+/venv
 /data_preprocessing/.ipynb_checkpoints
