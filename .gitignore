@@ -5,4 +5,4 @@
 **/*.toc
 /data
 /venv
-/data_preprocessing/.ipynb_checkpoints
+/old/data_preprocessing/.ipynb_checkpoints
