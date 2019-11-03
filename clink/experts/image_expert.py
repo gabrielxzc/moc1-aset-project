@@ -1,4 +1,5 @@
 import numpy as np
+from PIL import Image
 
 
 class ImageExpert:
@@ -29,8 +30,10 @@ class ImageExpert:
             v = np.zeros_like(x_std, dtype=np.uint8)
         return v
 
-    def array_to_image(self, np_array):
-        raise NotImplementedError()
+    @staticmethod
+    def array_to_image(np_array):
+        img = Image.fromarray(np_array, 'RGB')
+        return img
 
     def image_to_array(self, image):
         raise NotImplementedError()
