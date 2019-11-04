@@ -5,3 +5,6 @@ State of the art - lab 2:
 Lab3 - diagrams:
     1) Backend class diagram
     2) High level component diagram
+Lab5 - BPMN diagrams:
+    1) download media content
+    2) query media content
