@@ -10,3 +10,10 @@ Diagrams & requirements analysis - lab 3:
     1) Sequence diagram - user uploads audio file
     2) Sequence diagram - user uploads video file
     
+Lab 4:
+    1) Build Jupyter Notebook with documented steps for audio preprocessing
+    2) Attempt of Gated Recurrent Neural Network model
+
+Lab 5:
+    1) BPMN diagram for the use case: user uploads video file for audio tagging
+    
