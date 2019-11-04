@@ -1,9 +1,9 @@
 from tqdm import tqdm_notebook
 
-from clink.experts.audio_expert import AudioExpert
-from clink.experts.data_expert import DataExpert
-from clink.experts.image_expert import ImageExpert
-from clink.experts.storage_expert import save_object
+from dev.clink.experts.audio_expert import AudioExpert
+from dev.clink.experts.data_expert import DataExpert
+from dev.clink.experts.image_expert import ImageExpert
+from dev.clink.experts.storage_expert import save_object
 
 
 class SpectrogramConverter:

@@ -5,4 +5,7 @@
 **/*.toc
 /data
 /venv
-/old/data_preprocessing/.ipynb_checkpoints
+/dev/data_preprocessing/data
+/dev/data_preprocessing/work
+/dev/data_preprocessing/.ipynb_checkpoints
+/.idea

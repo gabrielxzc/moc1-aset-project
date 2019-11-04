@@ -1,7 +1,6 @@
-from clink.converters.spectrogram_converter import SpectrogramConverter
-import numpy as np
+from dev.clink.converters.spectrogram_converter import SpectrogramConverter
 
-from clink.experts.image_expert import ImageExpert
+from dev.clink.experts.image_expert import ImageExpert
 
 converter = SpectrogramConverter()
 # converter.convert_all()

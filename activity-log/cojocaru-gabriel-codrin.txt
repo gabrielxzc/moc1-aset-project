@@ -9,3 +9,12 @@ State of the art - lab 2:
 Diagrams & requirements analysis - lab 3:
   * requirements analysis latex document
   * front end architecture diagram
+
+Data preprocessing - lab 4:
+  * sound intensity representation
+  * fast fourier transformation for sound intensity representation
+  * spectrogram from fast fourier transformation
+  * 3d spectrogram visualization
+
+BPMN diagrams & different models - lab 5:
+  * bpmn diagram for training the model
