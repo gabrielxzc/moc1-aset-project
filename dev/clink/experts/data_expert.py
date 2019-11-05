@@ -6,7 +6,7 @@ def df_to_labeled_sounds(df):
     result = dict()
     for index, row in df.iterrows():
         sound = row.fname
-        labels = [label.strip() for label in row.split(',')]
+        labels = [label.strip() for label in row['labels'].split(',')]
         result[sound] = labels
     return result
 
