@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 from dev.clink.converters.wav_to_spectrogram_array import WavToSpectrogramConverter
-from dev.clink.experts.data_expert import DataExpert
+from dev.clink.experts.data_expert import DataExpert, normalize
 
 from dev.clink.experts.image_expert import ImageExpert
 from dev.clink.experts.storage_expert import load
@@ -54,6 +54,9 @@ def main(convert=False, converter_class=WavToSpectrogramConverter):
     test_arrays = [load(path) for path in test_arrays_paths]
 
     model = CnnLearner(input_shape=train_arrays.shape[1:], output_shape=80)
+
+    train_arrays = train_arrays / 255
+
     model.fit(train_arrays, train_labels)
     # prediction = model.predict(test_arrays)
 

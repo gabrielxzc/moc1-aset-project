@@ -8,7 +8,7 @@ class Model:
         self.model = None
         self.build_model(input_shape, output_shape)
 
-    def fit(self, x, y, epochs=5, batch_size=None, validation_data=None):
+    def fit(self, x, y, epochs=5, batch_size=128, validation_data=None):
         self.model.fit(x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data)
 
     def predict(self, x):
