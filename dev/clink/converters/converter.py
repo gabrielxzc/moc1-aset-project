@@ -4,7 +4,6 @@ from dev.clink.experts.data_expert import DataExpert
 from dev.clink.experts.image_expert import ImageExpert
 from dev.clink.experts.storage_expert import save_object
 
-
 class Converter:
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
         if audio_expert is None:

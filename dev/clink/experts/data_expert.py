@@ -20,8 +20,8 @@ def df_to_labeled_sounds(df):
 
 
 class DataExpert:
-    def __init__(self, data_root='data', destination_root='data/images'):
-        self.sounds_root = Path(data_root) / 'sounds'
+    def __init__(self, data_root='../../../data', destination_root='../../../data/images'):
+        self.sounds_root = Path(data_root) / 'freesound-audio-tagging-2019'
 
         self.train_curated_root = self.sounds_root / 'train_curated'
         self.train_curated_df = pd.read_csv(self.sounds_root / 'train_curated.csv')

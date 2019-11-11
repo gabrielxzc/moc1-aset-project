@@ -2,23 +2,12 @@ import librosa
 import numpy as np
 import librosa.display
 import matplotlib.pyplot as plt
-
-
-class Config:
-    sampling_rate = 44100
-    duration = 2
-    hop_length = 347 * duration  # to make time steps 128
-    f_min = 20
-    f_max = sampling_rate // 2
-    n_images = 128
-    n_fft = n_images * 20
-    samples = sampling_rate * duration
+from dev.clink.aspects.experts.audio_expert import init
 
 
 class AudioExpert:
+    @init
     def __init__(self, config=None):
-        if config is None:
-            config = Config()
         self.config = config
 
     def read_audio(self, pathname, trim_long_data):
