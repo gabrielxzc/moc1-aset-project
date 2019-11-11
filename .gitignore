@@ -8,4 +8,8 @@
 /dev/data_preprocessing/data
 /dev/data_preprocessing/work
 /dev/data_preprocessing/.ipynb_checkpoints
+/data_preprocessing/data
+/data_preprocessing/work
+/data_preprocessing/.ipynb_checkpoints
 /.idea
+**/*__pycache__*
