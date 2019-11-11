@@ -3,6 +3,7 @@
 **/*.out
 **/*.synctex.gz
 **/*.toc
+**/__pycache__
 /data
 /venv
 /dev/data_preprocessing/data
