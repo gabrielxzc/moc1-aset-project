@@ -1,6 +1,7 @@
 import unittest
 import pandas as pd
-
+import sys
+sys.path.append('../../')
 from dev.clink.experts.data_expert import df_to_labeled_sounds
 
 
