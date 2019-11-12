@@ -33,7 +33,7 @@ def to_windows(data_expert, arrays, labels, window_size=128, overlap=0.5):
 
 # todo: to_categorical over labels.
 # todo: X has varied sizes -> windowing or solution from notebook.
-def main(convert=True, converter_class=WavToSpectrogramConverter):
+def main(convert=False, converter_class=WavToSpectrogramConverter):
     image_path = '../data/images'
     data_expert = DataExpert(data_root='../data', destination_root=image_path)
 

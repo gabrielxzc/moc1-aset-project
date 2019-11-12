@@ -1,6 +1,7 @@
 from dev.clink.converters.converter import Converter
 from dev.clink.converters.aspects import *
 
+
 class WavToSpectrogramConverter(Converter):
 
     @log_call
