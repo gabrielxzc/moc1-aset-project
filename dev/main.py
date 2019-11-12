@@ -1,6 +1,8 @@
-import os
+import os, sys
 import numpy as np
 import pandas as pd
+
+sys.path.append("../")
 
 from dev.clink.converters.wav_to_spectrogram_array import WavToSpectrogramConverter
 from dev.clink.experts.data_expert import DataExpert, normalize
