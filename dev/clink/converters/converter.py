@@ -1,16 +1,17 @@
 import aspectlib
 
-from tqdm import tqdm_notebook
 from dev.clink.experts.audio_expert import AudioExpert
 from dev.clink.experts.data_expert import DataExpert
 from dev.clink.experts.image_expert import ImageExpert
 from dev.clink.experts.storage_expert import save_object
 
-@aspectlib.Aspect(bind = True)
+
+@aspectlib.Aspect(bind=True)
 def log_call(cutpoint, *args, **kargs):
-	with open("calls.txt", "a") as out_file:
-		out_file.write(str(cutpoint.__name__) + "\n")
-	yield
+    with open("calls.txt", "a") as out_file:
+        out_file.write(str(cutpoint.__name__) + "\n")
+    yield
+
 
 class Converter:
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
@@ -26,12 +27,16 @@ class Converter:
         self.image_expert = image_expert
 
     def convert_wav(self, sound_path):
+        """
+        :param sound_path: A path to a wav to process
+        :return: A tensor of any shape.
+        """
         raise NotImplementedError()
 
     @log_call
     def convert_multiple_wavs(self, df, source):
         images = []
-        for i, row in tqdm_notebook(df.iterrows()):
+        for i, row in df.iterrows():
             print(f'{i + 1} / {df.shape[0]}')
             name = str(row.fname)
             x_color = self.convert_wav(source / name)

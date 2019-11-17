@@ -11,10 +11,13 @@ class Model:
     def fit(self, x, y, epochs=5, batch_size=128, validation_data=None):
         self.model.fit(x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data)
 
-    def predict(self, x):
-        if np.max(x) > 1:
-            x = normalize(x)
-        return self.model.predict(x)
+    def evaluate(self, x, y):
+        return self.model.evaluate(x, y)
 
     def build_model(self, input_shape, output_shape):
+        """
+        Add layers and compile.
+        :param input_shape: Use the input shape for the first layer.
+        :param output_shape: Use the output shape for the last layer.
+        """
         raise NotImplementedError()
