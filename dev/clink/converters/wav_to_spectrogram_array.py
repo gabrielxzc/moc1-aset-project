@@ -4,6 +4,9 @@ from dev.clink.converters.aspects import *
 
 class WavToSpectrogramConverter(Converter):
 
+    def get_destination_root(self):
+        return '../data/images'
+
     @log_call
     @validate_extension
     @validate_return_value

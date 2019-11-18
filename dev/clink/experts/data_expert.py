@@ -20,7 +20,7 @@ def df_to_labeled_sounds(df):
 
 
 class DataExpert:
-    def __init__(self, data_root='data', destination_root='data/images'):
+    def __init__(self, data_root='data'):
         self.sounds_root = Path(data_root) / 'sounds'
 
         self.train_curated_root = self.sounds_root / 'train_curated'
@@ -33,18 +33,8 @@ class DataExpert:
 
         self.submission_df = pd.read_csv(self.sounds_root / 'sample_submission.csv')
 
-        self.destination_root = Path(destination_root)
-        self.destination_train_curated = self.destination_root / 'train_curated'
-        self.destination_train_noisy = self.destination_root / 'train_noisy'
-        self.destination_test = self.destination_root / 'test'
-
         self.train_curated_sound_to_labels = df_to_labeled_sounds(self.train_curated_df)
         self.train_noisy_sound_to_labels = df_to_labeled_sounds(self.train_noisy_df)
-
-        for folder in [self.destination_root, self.destination_train_curated,
-                       self.destination_train_noisy, self.destination_test]:
-            Path(folder).mkdir(parents=True, exist_ok=True)
-
         self.all_labels = self.get_all_labels()
         factorization = pd.factorize(self.all_labels)
         self.label_to_index = dict()
@@ -73,11 +63,11 @@ class DataExpert:
     def get_test_wav_names(self):
         return list(sorted(os.listdir(self.test_root)))
 
-    def build_submission(self, sounds_names_to_labels):
+    def build_submission(self, model):
         """
         :param sounds_names_to_labels: A data frame like "dev/clink/submission.csv".
         """
-        pass
+        prediction = model.predict(self.get_test_wav_names())
 
     def get_all_labels(self):
         return self.submission_df.columns[1:]

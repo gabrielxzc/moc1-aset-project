@@ -22,9 +22,9 @@ def to_windows(data_expert, arrays, labels, window_size=128, overlap=0.5):
     for array, label in zip(arrays, labels):
         k = 0
         while window_size * (k + 1) <= array.shape[1]:
-            new_arrays.append(array[:, window_size * k:window_size * (k + 1), :])
+            new_arrays.append(array[:, int(window_size * k):int(window_size * (k + 1)), :])
             new_labels.append(label)
-            k += 1
+            k += 1 - overlap
         new_arrays.append(array[:, -window_size:, :])
         new_labels.append(label)
     new_arrays = np.array(new_arrays) / 255
@@ -33,15 +33,15 @@ def to_windows(data_expert, arrays, labels, window_size=128, overlap=0.5):
 
 
 def main(convert=True, converter_class=WavToSpectrogramConverter, model_class=CnnLearner):
-    image_path = '../data/images'
-    data_expert = DataExpert(data_root='../data', destination_root=image_path)
+    data_expert = DataExpert(data_root='../data')
+    converter = converter_class(data_expert=data_expert)
 
     if convert:
         # create converted files at "image_path"
-        converter_class(data_expert=data_expert) \
-            .convert(convert_train_curated=False, convert_train_noisy=True, convert_test=False)
+        converter.convert(convert_train_curated=False, convert_train_noisy=True, convert_test=False)
 
     # paths of converted files (images probably)
+    image_path = converter.get_destination_root()
     train_arrays_paths = [os.path.join(image_path, 'train_curated', name)
                           for name in data_expert.get_train_curated_wav_names()]
 
@@ -52,7 +52,7 @@ def main(convert=True, converter_class=WavToSpectrogramConverter, model_class=Cn
 
     model = model_class(input_shape=train_arrays.shape[1:], output_shape=80)
 
-    model.fit(train_arrays, train_labels)
+    model.fit(train_arrays, train_labels, epochs=7)
 
     # test_arrays_paths = [os.path.join(image_path, 'train_noisy', name)
     #                      for name in data_expert.get_train_noisy_wav_names()]
@@ -60,10 +60,11 @@ def main(convert=True, converter_class=WavToSpectrogramConverter, model_class=Cn
     # test_labels = [data_expert.get_labels(name) for name in data_expert.get_train_noisy_wav_names()]
     #
     # test_arrays, test_labels = to_windows(data_expert, test_arrays, test_labels, window_size=128)
-    print(model.evaluate(train_arrays, train_labels))
+    loss, acc = model.evaluate(train_arrays, train_labels)
+    print(f'Accuracy: {acc}')
 
     # maybe some processing before
-    # data_expert.build_submission(prediction)
+    # data_expert.build_submission(model)
 
 
 if __name__ == '__main__':

@@ -14,6 +14,9 @@ class Model:
     def evaluate(self, x, y):
         return self.model.evaluate(x, y)
 
+    def predict(self, x):
+        return self.model.predict(x)
+
     def build_model(self, input_shape, output_shape):
         """
         Add layers and compile.

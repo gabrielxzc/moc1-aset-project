@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import aspectlib
 
 from dev.clink.experts.audio_expert import AudioExpert
@@ -15,6 +17,15 @@ def log_call(cutpoint, *args, **kargs):
 
 class Converter:
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
+        self.destination_root = Path(self.get_destination_root())
+        self.destination_train_curated = self.destination_root / 'train_curated'
+        self.destination_train_noisy = self.destination_root / 'train_noisy'
+        self.destination_test = self.destination_root / 'test'
+
+        for folder in [self.destination_root, self.destination_train_curated,
+                       self.destination_train_noisy, self.destination_test]:
+            Path(folder).mkdir(parents=True, exist_ok=True)
+
         if audio_expert is None:
             audio_expert = AudioExpert()
         if data_expert is None:
@@ -33,6 +44,14 @@ class Converter:
         """
         raise NotImplementedError()
 
+    def get_destination_root(self):
+        """
+        :return: A folder where the converted tensors will be stored.
+        Preferably, all implementations should have different folders.
+        Otherwise, overwriting will occur.
+        """
+        raise NotImplementedError()
+
     @log_call
     def convert_multiple_wavs(self, df, source):
         images = []
@@ -47,17 +66,17 @@ class Converter:
         if convert_train_curated:
             train_curated = self.convert_multiple_wavs(self.data_expert.train_curated_df,
                                                        source=self.data_expert.train_curated_root)
-            self.save_array_images(train_curated, self.data_expert.destination_train_curated)
+            self.save_array_images(train_curated, self.destination_train_curated)
 
         if convert_train_noisy:
             train_noisy = self.convert_multiple_wavs(self.data_expert.train_noisy_df,
                                                      source=self.data_expert.train_noisy_root)
-            self.save_array_images(train_noisy, self.data_expert.destination_train_noisy)
+            self.save_array_images(train_noisy, self.destination_train_noisy)
 
         if convert_test:
             test = self.convert_multiple_wavs(self.data_expert.submission_df,
                                               source=self.data_expert.test_root)
-            self.save_array_images(test, self.data_expert.destination_test)
+            self.save_array_images(test, self.destination_test)
 
     @staticmethod
     def save_array_images(images, root):
