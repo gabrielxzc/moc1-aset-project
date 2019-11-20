@@ -17,6 +17,12 @@ class Model:
     def predict(self, x):
         return self.model.predict(x)
 
+    def save_weights(self, filepath='weights'):
+        self.model.save_weights(filepath)
+
+    def load_weights(self, filepath='weights'):
+        self.model.load_weights(filepath)
+
     def build_model(self, input_shape, output_shape):
         """
         Add layers and compile.

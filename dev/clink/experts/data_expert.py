@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from dev.clink.experts.storage_expert import load
 
 
 def normalize(x):
@@ -57,20 +58,35 @@ class DataExpert:
     def get_train_curated_wav_names(self):
         return list(sorted(os.listdir(self.train_curated_root)))
 
+    def load_train_curated_arrays(self, root_dir):
+        paths = [os.path.join(root_dir, 'train_curated', name) for name in self.get_train_curated_wav_names()]
+        return [load(path) for path in paths]
+
+    def load_train_curated_labels(self):
+        return [self.get_labels(name) for name in self.get_train_curated_wav_names()]
+
     def get_train_noisy_wav_names(self):
         return list(sorted(os.listdir(self.train_noisy_root)))
+
+    def load_train_noisy_arrays(self, root_dir):
+        paths = [os.path.join(root_dir, 'train_noisy', name) for name in self.get_train_noisy_wav_names()]
+        return [load(path) for path in paths]
+
+    def load_train_noisy_labels(self):
+        return [self.get_labels(name) for name in self.get_train_noisy_wav_names()]
 
     def get_test_wav_names(self):
         return list(sorted(os.listdir(self.test_root)))
 
-    def build_submission(self, model):
-        """
-        :param sounds_names_to_labels: A data frame like "dev/clink/submission.csv".
-        """
-        prediction = model.predict(self.get_test_wav_names())
+    def load_test_arrays(self, root_dir):
+        paths = [os.path.join(root_dir, 'test', name) for name in self.get_test_wav_names()]
+        return [load(path) for path in paths]
 
     def get_all_labels(self):
         return self.submission_df.columns[1:]
+
+    def get_all_column_names(self):
+        return self.submission_df.columns
 
     def to_categorical(self, labels):
         """
