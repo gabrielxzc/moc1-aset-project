@@ -58,7 +58,7 @@ def get_model_memory_usage(model: keras.Model) -> float:
         number_size = 8.0
 
     total_memory = number_size * (
-            shapes_mem_count + trainable_count + non_trainable_count
+        shapes_mem_count + trainable_count + non_trainable_count
     )
     gbytes = np.round(total_memory / (1024.0 ** 3), 3) + internal_model_mem_count
     return gbytes * 1024
