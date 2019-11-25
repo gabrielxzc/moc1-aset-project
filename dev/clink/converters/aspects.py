@@ -31,8 +31,15 @@ def ensure_wav_extension(*args, **kwargs):
     # data: array of (name, image)
     for i in range(len(data)):
         dot_index = data[i][0].find(".")
+        old_name = data[i][0]
+        new_name = data[i][0]
+        
         if dot_index == -1:
-            data[i] = (data[i][0] + ".wav", data[i][1])
+            new_name = data[i][0] + ".wav"
         elif data[i][0][dot_index:] != ".wav":
-            data[i] = (data[i][0][:dot_index] + ".wav", data[i][1])
+            new_name = data[i][0][:dot_index] + ".wav"
+        
+        if old_name != new_name:
+        	print("File", old_name, "did not have wav extension and was renamed to", new_name)
+        	data[i] = (new_name, data[i][1])
     yield
