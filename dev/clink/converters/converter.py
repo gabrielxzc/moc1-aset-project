@@ -2,9 +2,7 @@ from pathlib import Path
 
 import aspectlib
 
-from dev.clink.experts.audio_expert import AudioExpert
-from dev.clink.experts.data_expert import DataExpert
-from dev.clink.experts.image_expert import ImageExpert
+from dev.clink.aspects.converters.converter import init
 from dev.clink.experts.storage_expert import save_object
 from dev.clink.converters.aspects import ensure_wav_extension
 
@@ -17,6 +15,7 @@ def log_call(cutpoint, *args, **kargs):
 
 
 class Converter:
+    @init
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
         self.destination_root = Path(self.get_destination_root())
         self.destination_train_curated = self.destination_root / 'train_curated'
@@ -26,13 +25,6 @@ class Converter:
         for folder in [self.destination_root, self.destination_train_curated,
                        self.destination_train_noisy, self.destination_test]:
             Path(folder).mkdir(parents=True, exist_ok=True)
-
-        if audio_expert is None:
-            audio_expert = AudioExpert()
-        if data_expert is None:
-            data_expert = DataExpert()
-        if image_expert is None:
-            image_expert = ImageExpert()
 
         self.audio_expert = audio_expert
         self.data_expert = data_expert
