@@ -32,7 +32,7 @@ class ImageExpert:
 
     @staticmethod
     def array_to_image(np_array):
-        img = Image.fromarray(np_array, 'RGB')
+        img = Image.fromarray(np_array, "RGB")
         return img
 
     def image_to_array(self, image):

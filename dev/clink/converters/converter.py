@@ -18,12 +18,16 @@ class Converter:
     @init
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
         self.destination_root = Path(self.get_destination_root())
-        self.destination_train_curated = self.destination_root / 'train_curated'
-        self.destination_train_noisy = self.destination_root / 'train_noisy'
-        self.destination_test = self.destination_root / 'test'
+        self.destination_train_curated = self.destination_root / "train_curated"
+        self.destination_train_noisy = self.destination_root / "train_noisy"
+        self.destination_test = self.destination_root / "test"
 
-        for folder in [self.destination_root, self.destination_train_curated,
-                       self.destination_train_noisy, self.destination_test]:
+        for folder in [
+            self.destination_root,
+            self.destination_train_curated,
+            self.destination_train_noisy,
+            self.destination_test,
+        ]:
             Path(folder).mkdir(parents=True, exist_ok=True)
 
         self.audio_expert = audio_expert
@@ -49,27 +53,34 @@ class Converter:
     def convert_multiple_wavs(self, df, source):
         images = []
         for i, row in df.iterrows():
-            print(f'{i + 1} / {df.shape[0]}')
+            print(f"{i + 1} / {df.shape[0]}")
             name = str(row.fname)
             x_color = self.convert_wav(source / name)
             images.append((name, x_color))
         return images
 
-    def convert(self, convert_train_curated=True, convert_train_noisy=False, convert_test=True):
+    def convert(
+        self, convert_train_curated=True, convert_train_noisy=False, convert_test=True
+    ):
         if convert_train_curated:
             # self.save_array_images(images = [('wqdq', 23), ('a.txt', 544), ('b.wav', 232)], root = Path("/home/cristi"))
-            train_curated = self.convert_multiple_wavs(self.data_expert.train_curated_df,
-                                                       source=self.data_expert.train_curated_root)
+            train_curated = self.convert_multiple_wavs(
+                self.data_expert.train_curated_df,
+                source=self.data_expert.train_curated_root,
+            )
             self.save_array_images(train_curated, self.destination_train_curated)
 
         if convert_train_noisy:
-            train_noisy = self.convert_multiple_wavs(self.data_expert.train_noisy_df,
-                                                     source=self.data_expert.train_noisy_root)
+            train_noisy = self.convert_multiple_wavs(
+                self.data_expert.train_noisy_df,
+                source=self.data_expert.train_noisy_root,
+            )
             self.save_array_images(train_noisy, self.destination_train_noisy)
 
         if convert_test:
-            test = self.convert_multiple_wavs(self.data_expert.submission_df,
-                                              source=self.data_expert.test_root)
+            test = self.convert_multiple_wavs(
+                self.data_expert.submission_df, source=self.data_expert.test_root
+            )
             self.save_array_images(test, self.destination_test)
 
     @staticmethod

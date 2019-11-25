@@ -9,7 +9,9 @@ class Model:
         self.build_model(input_shape, output_shape)
 
     def fit(self, x, y, epochs=5, batch_size=128, validation_data=None):
-        self.model.fit(x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data)
+        self.model.fit(
+            x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data
+        )
 
     def evaluate(self, x, y):
         return self.model.evaluate(x, y)
@@ -17,10 +19,10 @@ class Model:
     def predict(self, x):
         return self.model.predict(x)
 
-    def save_weights(self, filepath='weights'):
+    def save_weights(self, filepath="weights"):
         self.model.save_weights(filepath)
 
-    def load_weights(self, filepath='weights'):
+    def load_weights(self, filepath="weights"):
         self.model.load_weights(filepath)
 
     def build_model(self, input_shape, output_shape):

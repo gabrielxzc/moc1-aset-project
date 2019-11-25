@@ -27,7 +27,12 @@ class FftConverter(Converter):
         m = frequencies_side.mean()
         sd = frequencies_side.std()
         frequencies_side = (frequencies_side - m) / sd
-        return np.hstack((np.array([fft_side, frequencies_side]).T, np.expand_dims(np.zeros(len(fft_side)), axis=1)))
+        return np.hstack(
+            (
+                np.array([fft_side, frequencies_side]).T,
+                np.expand_dims(np.zeros(len(fft_side)), axis=1),
+            )
+        )
 
     def get_destination_root(self):
-        return '../data/fft'
+        return "../data/fft"

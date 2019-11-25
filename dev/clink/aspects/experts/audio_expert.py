@@ -15,11 +15,11 @@ class Config:
 @aspectlib.Aspect
 def init(*args, **kwargs):
     print("Initializing new Audio Expert ...")
-    if 'config' not in kwargs:
-        print('Config was none, inserting default config')
+    if "config" not in kwargs:
+        print("Config was none, inserting default config")
         kwargs.update({"config": Config()})
         yield aspectlib.Proceed(*args, **kwargs)
     else:
-        print('Config is present, passing it further')
+        print("Config is present, passing it further")
         yield aspectlib.Proceed
     print("Successfully initialized audio expert")

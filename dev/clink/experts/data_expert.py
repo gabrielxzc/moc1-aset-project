@@ -15,24 +15,24 @@ def df_to_labeled_sounds(df):
     result = dict()
     for index, row in df.iterrows():
         sound = row.fname
-        labels = [label.strip() for label in row['labels'].split(',')]
+        labels = [label.strip() for label in row["labels"].split(",")]
         result[sound] = labels
     return result
 
 
 class DataExpert:
-    def __init__(self, data_root='data'):
-        self.sounds_root = Path(data_root) / 'sounds'
+    def __init__(self, data_root="data"):
+        self.sounds_root = Path(data_root) / "sounds"
 
-        self.train_curated_root = self.sounds_root / 'train_curated'
-        self.train_curated_df = pd.read_csv(self.sounds_root / 'train_curated.csv')
+        self.train_curated_root = self.sounds_root / "train_curated"
+        self.train_curated_df = pd.read_csv(self.sounds_root / "train_curated.csv")
 
-        self.train_noisy_root = self.sounds_root / 'train_noisy'
-        self.train_noisy_df = pd.read_csv(self.sounds_root / 'train_noisy.csv')
+        self.train_noisy_root = self.sounds_root / "train_noisy"
+        self.train_noisy_df = pd.read_csv(self.sounds_root / "train_noisy.csv")
 
-        self.test_root = self.sounds_root / 'test'
+        self.test_root = self.sounds_root / "test"
 
-        self.submission_df = pd.read_csv(self.sounds_root / 'sample_submission.csv')
+        self.submission_df = pd.read_csv(self.sounds_root / "sample_submission.csv")
 
         self.train_curated_sound_to_labels = df_to_labeled_sounds(self.train_curated_df)
         self.train_noisy_sound_to_labels = df_to_labeled_sounds(self.train_noisy_df)
@@ -50,16 +50,21 @@ class DataExpert:
             return self.train_curated_sound_to_labels[sound_name]
         if sound_name in self.train_noisy_sound_to_labels.keys():
             return self.train_noisy_sound_to_labels[sound_name]
-        raise AttributeError(f'{sound_name} was not found. '
-                             f'Please make sure you provide a file name, not a file path. '
-                             f'You might get this error because you are trying to get the '
-                             f'labels of a test wav.')
+        raise AttributeError(
+            f"{sound_name} was not found. "
+            f"Please make sure you provide a file name, not a file path. "
+            f"You might get this error because you are trying to get the "
+            f"labels of a test wav."
+        )
 
     def get_train_curated_wav_names(self):
         return list(sorted(os.listdir(self.train_curated_root)))
 
     def load_train_curated_arrays(self, root_dir):
-        paths = [os.path.join(root_dir, 'train_curated', name) for name in self.get_train_curated_wav_names()]
+        paths = [
+            os.path.join(root_dir, "train_curated", name)
+            for name in self.get_train_curated_wav_names()
+        ]
         return [load(path) for path in paths]
 
     def load_train_curated_labels(self):
@@ -69,7 +74,10 @@ class DataExpert:
         return list(sorted(os.listdir(self.train_noisy_root)))
 
     def load_train_noisy_arrays(self, root_dir):
-        paths = [os.path.join(root_dir, 'train_noisy', name) for name in self.get_train_noisy_wav_names()]
+        paths = [
+            os.path.join(root_dir, "train_noisy", name)
+            for name in self.get_train_noisy_wav_names()
+        ]
         return [load(path) for path in paths]
 
     def load_train_noisy_labels(self):
@@ -79,7 +87,9 @@ class DataExpert:
         return list(sorted(os.listdir(self.test_root)))
 
     def load_test_arrays(self, root_dir):
-        paths = [os.path.join(root_dir, 'test', name) for name in self.get_test_wav_names()]
+        paths = [
+            os.path.join(root_dir, "test", name) for name in self.get_test_wav_names()
+        ]
         return [load(path) for path in paths]
 
     def get_all_labels(self):
@@ -100,7 +110,7 @@ class DataExpert:
         return output
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import pandas as pd
 
-    data_expert = DataExpert(data_root='../../../data')
+    data_expert = DataExpert(data_root="../../../data")

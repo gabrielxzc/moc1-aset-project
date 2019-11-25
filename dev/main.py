@@ -16,13 +16,15 @@ from dev.clink.preprocessors.windower import Windower
 
 
 def main(convert=True, converter_class=Converter, model_class=Model, train=True):
-    data_expert = DataExpert(data_root='../data')
+    data_expert = DataExpert(data_root="../data")
     windower = Windower(data_expert=data_expert, window_size=128, overlap=0.5)
     converter = converter_class(data_expert=data_expert)
 
     if convert:
         # create converted files at "image_path"
-        converter.convert(convert_train_curated=True, convert_train_noisy=False, convert_test=False)
+        converter.convert(
+            convert_train_curated=True, convert_train_noisy=False, convert_test=False
+        )
 
     # paths of converted files (images probably)
     image_path = converter.get_destination_root()
@@ -47,7 +49,7 @@ def main(convert=True, converter_class=Converter, model_class=Model, train=True)
     # 0.32657365696845236
 
     loss, acc = model.evaluate(train_arrays, train_labels)
-    print(f'Train acc: {acc}')
+    print(f"Train acc: {acc}")
 
     # windower.build_submission(model, converter.get_destination_root())
 
@@ -76,6 +78,10 @@ def k_fold_validation(model, windower, initial_weights, x, y, k=5):
 
 # If you have cudnn enabled, you can monitor the gpu with
 # watch -n 05 nvidia-smi
-if __name__ == '__main__':
-    main(convert=True, converter_class=WavToSpectrogramConverter,
-         model_class=CnnLearner, train=False)
+if __name__ == "__main__":
+    main(
+        convert=True,
+        converter_class=WavToSpectrogramConverter,
+        model_class=CnnLearner,
+        train=False,
+    )

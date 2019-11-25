@@ -18,10 +18,16 @@ class Windower:
         for array, label in zip(arrays, labels):
             k = 0
             while self.window_size * (k + 1) <= array.shape[1]:
-                new_arrays.append(array[:, int(self.window_size * k):int(self.window_size * (k + 1)), :])
+                new_arrays.append(
+                    array[
+                        :,
+                        int(self.window_size * k) : int(self.window_size * (k + 1)),
+                        :,
+                    ]
+                )
                 new_labels.append(label)
                 k += 1 - self.overlap
-            new_arrays.append(array[:, -self.window_size:, :])
+            new_arrays.append(array[:, -self.window_size :, :])
             new_labels.append(label)
         new_arrays = np.array(new_arrays) / 255
         new_labels = np.array(new_labels) / 255
@@ -35,7 +41,13 @@ class Windower:
             new_arrays = []
             k = 0
             while self.window_size * (k + 1) <= array.shape[1]:
-                new_arrays.append(array[:, int(self.window_size * k):int(self.window_size * (k + 1)), :])
+                new_arrays.append(
+                    array[
+                        :,
+                        int(self.window_size * k) : int(self.window_size * (k + 1)),
+                        :,
+                    ]
+                )
                 k += 1 - self.overlap
             new_arrays = np.array(new_arrays)
             y = model.predict(new_arrays)
@@ -44,5 +56,5 @@ class Windower:
         names = np.expand_dims(np.array(names), axis=1)
         result = np.hstack((names, result))
         df = DataFrame(data=result, columns=self.data_expert.get_all_column_names())
-        df.set_index('fname', inplace=True)
-        df.to_csv('submission.csv')
+        df.set_index("fname", inplace=True)
+        df.to_csv("submission.csv")

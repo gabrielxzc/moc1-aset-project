@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 def fft_example(path):
     frequency, signal = wavfile.read(path)
-    print(f'Frequency: {frequency}')
+    print(f"Frequency: {frequency}")
     l_audio = len(signal.shape)
     print("Channels", l_audio)
     if l_audio == 2:
@@ -27,22 +27,22 @@ def fft_example(path):
     fft_freqs_side = np.array(freqs_side)
     plt.subplot(311)
     p1 = plt.plot(t, signal, "g")  # plotting the signal
-    plt.xlabel('Time')
-    plt.ylabel('Amplitude')
+    plt.xlabel("Time")
+    plt.ylabel("Amplitude")
     plt.subplot(312)
     p2 = plt.plot(freqs, FFT, "r")  # plotting the complete fft spectrum
-    plt.xlabel('Frequency (Hz)')
-    plt.ylabel('Count dbl-sided')
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Count dbl-sided")
     plt.subplot(313)
     p3 = plt.plot(freqs_side, abs(FFT_side), "b")  # plotting the positive fft spectrum
-    plt.xlabel('Frequency (Hz)')
-    plt.ylabel('Count single-sided')
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Count single-sided")
     plt.show()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # wav_fft_playground()
-    path1 = '../data/sounds/train_curated/0a9bebde.wav'
-    path2 = '../data/sounds/train_curated/0a9c90be.wav'
+    path1 = "../data/sounds/train_curated/0a9bebde.wav"
+    path2 = "../data/sounds/train_curated/0a9c90be.wav"
     fft_example(path1)
     fft_example(path2)
