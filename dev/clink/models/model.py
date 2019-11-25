@@ -1,5 +1,6 @@
 import numpy as np
 
+from dev.clink.aspects.models.model import fit
 from dev.clink.experts.data_expert import normalize
 
 
@@ -8,6 +9,7 @@ class Model:
         self.model = None
         self.build_model(input_shape, output_shape)
 
+    @fit
     def fit(self, x, y, epochs=5, batch_size=128, validation_data=None):
         self.model.fit(
             x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data
