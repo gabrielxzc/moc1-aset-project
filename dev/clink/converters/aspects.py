@@ -22,3 +22,15 @@ def validate_extension(*args, **kargs):
 def validate_return_value(*args, **kargs):
     val = yield aspectlib.Proceed
     assert isinstance(val, np.ndarray)
+
+@aspectlib.Aspect
+def ensure_wav_extension(*args, **kargs):
+	data = kargs["images"]
+	# data: array of (name, image)
+	for i in range(len(data)):
+		dot_index = data[i][0].find(".")
+		if dot_index == -1:
+			data[i] = (data[i][0] + ".wav", data[i][1])
+		elif data[i][0][dot_index:] != ".wav":
+			data[i] = (data[i][0][:dot_index] + ".wav", data[i][1])
+	yield

@@ -6,6 +6,7 @@ from dev.clink.experts.audio_expert import AudioExpert
 from dev.clink.experts.data_expert import DataExpert
 from dev.clink.experts.image_expert import ImageExpert
 from dev.clink.experts.storage_expert import save_object
+from dev.clink.converters.aspects import ensure_wav_extension
 
 
 @aspectlib.Aspect(bind=True)
@@ -64,6 +65,7 @@ class Converter:
 
     def convert(self, convert_train_curated=True, convert_train_noisy=False, convert_test=True):
         if convert_train_curated:
+            # self.save_array_images(images = [('wqdq', 23), ('a.txt', 544), ('b.wav', 232)], root = Path("/home/cristi"))
             train_curated = self.convert_multiple_wavs(self.data_expert.train_curated_df,
                                                        source=self.data_expert.train_curated_root)
             self.save_array_images(train_curated, self.destination_train_curated)
@@ -79,6 +81,8 @@ class Converter:
             self.save_array_images(test, self.destination_test)
 
     @staticmethod
+    @ensure_wav_extension
     def save_array_images(images, root):
         for (name, image) in images:
+            # print(name)
             save_object(root / name, image)
