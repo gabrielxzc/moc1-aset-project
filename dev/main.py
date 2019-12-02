@@ -80,8 +80,8 @@ def k_fold_validation(model, windower, initial_weights, x, y, k=5):
 # watch -n 05 nvidia-smi
 if __name__ == "__main__":
     main(
-        convert=True,
+        convert=False,
         converter_class=WavToSpectrogramConverter,
         model_class=CnnLearner,
-        train=False,
+        train=True,
     )

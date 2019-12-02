@@ -60,8 +60,7 @@ def get_model_memory_usage(model: keras.Model) -> float:
     total_memory = number_size * (
         shapes_mem_count + trainable_count + non_trainable_count
     )
-    gbytes = np.round(total_memory / (1024.0 ** 3), 3) + internal_model_mem_count
-    return gbytes * 1024
+    return np.round(total_memory / (1024.0 ** 2), 3) + internal_model_mem_count
 
 
 @aspectlib.Aspect
@@ -82,13 +81,6 @@ def fit(*args, **kwargs) -> Generator:
         print("memory per model instance", memory_per_single_instance)
 
         recommended_batch_size = total_memory // memory_per_single_instance
-
-        batch_size = 128
-        if "batch_size" in kwargs:
-            batch_size = kwargs["batch_size"]
-
-        if recommended_batch_size > batch_size:
-            recommended_batch_size = batch_size
 
         kwargs.update({"batch_size": int(recommended_batch_size)})
         print("Using recommended batch size", recommended_batch_size)
