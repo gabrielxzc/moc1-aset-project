@@ -27,7 +27,7 @@ def validate_return_value(*args, **kwargs):
 
 @aspectlib.Aspect
 def ensure_wav_extension(*args, **kwargs):
-    data = kwargs["images"]
+    data = kwargs["images"] if "images" in kwargs else args[0]
     # data: array of (name, image)
     for i in range(len(data)):
         dot_index = data[i][0].find(".")

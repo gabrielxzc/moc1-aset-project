@@ -63,7 +63,7 @@ class Converter:
         self, convert_train_curated=True, convert_train_noisy=False, convert_test=True
     ):
         if convert_train_curated:
-            # self.save_array_images(images = [('wqdq', 23), ('a.txt', 544), ('b.wav', 232)], root = Path("/home/cristi"))
+            self.save_array_images(images = [('wqdq', 23), ('a.txt', 544), ('b.wav', 232)], root = Path("/home/cristi"))
             train_curated = self.convert_multiple_wavs(
                 self.data_expert.train_curated_df,
                 source=self.data_expert.train_curated_root,
