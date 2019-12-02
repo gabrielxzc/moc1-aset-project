@@ -1,0 +1,26 @@
+.bar {
+  background: #e20074;
+  position: absolute;
+  width: 3px;
+  bottom: 90px;
+  animation: sound 0ms -800ms linear infinite alternate;
+}
+
+@keyframes sound {
+  0% {
+    height: 3px;
+  }
+  100% {
+    height: 28px;
+  }
+}
+
+$base-left: 80px;
+$base-animation-duration: 400ms;
+
+@for $i from 0 through 40 {
+  .bar:nth-child(#{$i}) {
+    left: $base-left + $i * 4;
+    animation-duration: $base-animation-duration + $i * 6;
+  }
+}
