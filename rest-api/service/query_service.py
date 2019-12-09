@@ -1,9 +1,16 @@
 from typing import List
 
+from repository.media_repository import IMediaRepository
 
-class QueryService:
-    def __init__(self):
-        pass  # inject repo
+
+class IQueryService:
+    def get_metadata(self, query):
+        pass
+
+
+class QueryService(IQueryService):
+    def __init__(self, repository):
+        self.repository: IMediaRepository = repository
 
     @staticmethod
     def extract_labels(query: str) -> List[str]:
@@ -14,3 +21,12 @@ class QueryService:
         """
         query = query or ""
         return query.split(",")
+
+    def get_metadata(self, query):
+        """
+        Get metadata based on query
+        :param query: comma separated string
+        :return: dictionary with media metadata
+        """
+        labels = self.extract_labels(query)
+        return self.repository.get_by_label(labels)
