@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from controllers.download_contoller import DownloadController
+from controllers.download_controller import DownloadController
 from controllers.search_controller import SearchController
 
 app = Flask(__name__)
