@@ -9,8 +9,8 @@ class IQueryService:
 
 
 class QueryService(IQueryService):
-    def __init__(self, repository):
-        self.repository: IMediaRepository = repository
+    def __init__(self, media_repository):
+        self.repository: IMediaRepository = media_repository
 
     @staticmethod
     def extract_labels(query: str) -> List[str]:
