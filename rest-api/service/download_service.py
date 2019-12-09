@@ -10,7 +10,9 @@ class IDownloadService:
 
 
 class DownloadService(IDownloadService):
-    def __init__(self, media_repository: IMediaRepository, disk_repository: IDiskRepository):
+    def __init__(
+        self, media_repository: IMediaRepository, disk_repository: IDiskRepository
+    ):
         self.media_repository = media_repository
         self.disk_repository = disk_repository
 

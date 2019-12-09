@@ -10,13 +10,10 @@ from service.query_service import QueryService
 class Services(containers.DeclarativeContainer):
     """list of services"""
 
-    query_service = providers.Factory(
-        QueryService,
-        media_repository=MediaRepository()
-    )
+    query_service = providers.Factory(QueryService, media_repository=MediaRepository())
 
     download_service = providers.Factory(
         DownloadService,
         media_repository=MediaRepository(),
-        disk_repository=DiskRepository()
+        disk_repository=DiskRepository(),
     )

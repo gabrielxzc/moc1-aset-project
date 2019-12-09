@@ -16,14 +16,11 @@ class MediaRepository(IMediaRepository):
         :param labels:
         :return:
         """
-        return {"metadata": [
-            {
-                "id": 1,
-                "name": "bird sounds",
-                "description": "",
-                "labels": ["bird"]
-            }
-        ]}
+        return {
+            "metadata": [
+                {"id": 1, "name": "bird sounds", "description": "", "labels": ["bird"]}
+            ]
+        }
 
     def get_by_id(self, id: int) -> dict:
         return {
@@ -31,5 +28,5 @@ class MediaRepository(IMediaRepository):
             "name": "bird sounds",
             "description": "",
             "path": "",
-            "labels": ["bird"]
+            "labels": ["bird"],
         }

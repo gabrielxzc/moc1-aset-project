@@ -7,8 +7,8 @@ from controllers.search_controller import SearchController
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(SearchController, '/search')
-api.add_resource(DownloadController, '/download/<int:id>')
+api.add_resource(SearchController, "/search")
+api.add_resource(DownloadController, "/download/<int:id>")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
