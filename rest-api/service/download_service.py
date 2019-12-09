@@ -1,6 +1,6 @@
 import base64
-from typing import Any
 
+from repository.disk_repository import IDiskRepository
 from repository.media_repository import IMediaRepository
 
 
@@ -10,9 +10,9 @@ class IDownloadService:
 
 
 class DownloadService(IDownloadService):
-    def __init__(self, media_repository, disk_repository):
-        self.media_repository: IMediaRepository = media_repository
-        self.disk_repository: Any = disk_repository
+    def __init__(self, media_repository: IMediaRepository, disk_repository: IDiskRepository):
+        self.media_repository = media_repository
+        self.disk_repository = disk_repository
 
     def get_base64_content(self, id: int) -> str:
         """

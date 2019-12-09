@@ -9,8 +9,8 @@ class IQueryService:
 
 
 class QueryService(IQueryService):
-    def __init__(self, media_repository):
-        self.repository: IMediaRepository = media_repository
+    def __init__(self, media_repository: IMediaRepository):
+        self.repository = media_repository
 
     @staticmethod
     def extract_labels(query: str) -> List[str]:
@@ -22,7 +22,7 @@ class QueryService(IQueryService):
         query = query or ""
         return query.split(",")
 
-    def get_metadata(self, query):
+    def get_metadata(self, query: str) -> dict:
         """
         Get metadata based on query
         :param query: comma separated string
