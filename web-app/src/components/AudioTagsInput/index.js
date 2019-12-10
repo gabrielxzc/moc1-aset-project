@@ -47,7 +47,7 @@ const AudioTagsInput = props => {
           <div className="control is-expanded">
             <InputWithSuggestions
               id="audio-tags-input"
-              placeholder="Tag"
+              placeholder="Vroom"
               onAdd={handleAdd}
               getSuggestions={getSuggestedAudioTags}
               help={
