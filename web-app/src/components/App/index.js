@@ -1,18 +1,19 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import Header from "../Header";
 import UploadArea from "../UploadArea";
-import SearchBar from "../SearchBar";
 import AudioFiles from "../AudioFiles";
+import AudioTagsInput from "../AudioTagsInput";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <UploadArea />
-      <SearchBar />
+      <AudioTagsInput />
       <AudioFiles />
-    </>
+    </BrowserRouter>
   );
 }
 

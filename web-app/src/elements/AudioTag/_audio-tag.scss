@@ -1,0 +1,15 @@
+.audio-tag {
+  border: 1px solid transparent;
+
+  &.is-light {
+    border: 1px solid #363636;
+  }
+}
+
+.audi-tag,
+.audio-tag.is-with-delete-icon {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
