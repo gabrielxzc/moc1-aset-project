@@ -1,8 +1,21 @@
+.audio-file {
+  height: 150px;
+}
+
+.audio-file-tags {
+  height: 35px;
+  overflow: auto;
+}
+
 .bar {
   background: #e20074;
   position: absolute;
   width: 3px;
+  height: 3px;
   bottom: 90px;
+}
+
+.bar--animated {
   animation: sound 0ms -800ms linear infinite alternate;
 }
 
@@ -21,6 +34,6 @@ $base-animation-duration: 400ms;
 @for $i from 0 through 40 {
   .bar:nth-child(#{$i}) {
     left: $base-left + $i * 4;
-    animation-duration: $base-animation-duration + $i * 6;
+    animation-duration: random(250) + 500ms;
   }
 }
