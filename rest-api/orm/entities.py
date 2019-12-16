@@ -23,7 +23,7 @@ class AudioFileTrain(Base):
         self.filepath = filepath
 
 
-class UploadedAudioFiles(Base):
+class UploadedAudioFile(Base):
     __tablename__ = 'uploaded_audio_files'
     __table_args__ = {'extend_existing': True}
 
