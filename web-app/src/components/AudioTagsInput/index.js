@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
-import InputWithSuggestions from "../InputWithSuggestions";
+import InputWithSuggestions from "../generic/InputWithSuggestions";
 import AudioTag from "../../elements/AudioTag";
 
 import { ALL_AUDIO_TAGS } from "../../commonlib/audio-tags";
@@ -47,11 +47,11 @@ const AudioTagsInput = props => {
           <div className="control is-expanded">
             <InputWithSuggestions
               id="audio-tags-input"
-              placeholder="Vroom"
+              placeholder="Clapping"
               onAdd={handleAdd}
               getSuggestions={getSuggestedAudioTags}
               help={
-                "Add one or multiple tags and the press the search button when you are ready!"
+                "Add one or multiple tags then press the search button when you are ready!"
               }
             />
           </div>

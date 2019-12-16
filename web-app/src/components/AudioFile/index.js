@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./_audio-file.scss";
-import { ALL_AUDIO_TAGS } from "../../commonlib/audio-tags";
 
 const AudioFile = props => {
-  const tags = props.tags
-    ? props.tags
-    : [ALL_AUDIO_TAGS[2], ALL_AUDIO_TAGS[5], ALL_AUDIO_TAGS[8]];
+  const [audio, setAudio] = useState();
+  const [tags, setTags] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    setTags(props.audioFile.tags);
+    setAudio(new Audio(props.audioFile.uri));
+  }, [props.audioFile]);
 
   return (
     <div className="card audio-file">
@@ -15,11 +19,23 @@ const AudioFile = props => {
           <div className="media-left">
             <figure className="image is-48x48">
               <span className="icon is-large" style={{ cursor: "pointer" }}>
-                {props.isPlaying ? (
-                  <i className="fas fa-2x fa-pause-circle" />
-                ) : (
-                  <i className="fas fa-2x fa-play-circle" />
-                )}
+                <span
+                  onClick={() => {
+                    if (isPlaying) {
+                      audio.pause();
+                    } else {
+                      audio.play();
+                    }
+
+                    setIsPlaying(!isPlaying);
+                  }}
+                >
+                  {isPlaying ? (
+                    <i className="fas fa-2x fa-pause-circle"></i>
+                  ) : (
+                    <i className="fas fa-2x fa-play-circle"></i>
+                  )}
+                </span>
               </span>
             </figure>
           </div>
@@ -27,7 +43,7 @@ const AudioFile = props => {
             {[...Array(40).keys()].map(index => (
               <div
                 key={index}
-                className={`bar ${props.isPlaying ? "bar--animated" : ""}`}
+                className={`bar ${isPlaying ? "bar--animated" : ""}`}
               />
             ))}
           </div>

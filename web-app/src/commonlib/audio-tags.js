@@ -1,3 +1,5 @@
+import { range, randomInt } from "./utils";
+
 export const ALL_AUDIO_TAGS = [
   "Accelerating_and_revving_and_vroom",
   "Accordion",
@@ -80,3 +82,27 @@ export const ALL_AUDIO_TAGS = [
   "Yell",
   "Zipper_(clothing)"
 ];
+
+export const randomAudioTags = (excludedTags, numberOfRandomTags) => {
+  const tags = [];
+
+  range(0, numberOfRandomTags).forEach(() => {
+    let tag;
+
+    while (true) {
+      tag = ALL_AUDIO_TAGS[randomInt(0, ALL_AUDIO_TAGS.length - 1)];
+
+      for (const excludedTag of excludedTags.concat(tags)) {
+        if (excludedTag === tag) {
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    tags.push(tag);
+  });
+
+  return tags;
+};

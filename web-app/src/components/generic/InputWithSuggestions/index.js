@@ -1,7 +1,7 @@
 import React from "react";
 
-import Input from "../../elements/Input";
-import Suggestions from "../../elements/Suggestions";
+import Input from "../../../elements/Input";
+import Suggestions from "../../../elements/Suggestions";
 
 class InputWithSuggestions extends React.Component {
   constructor(props) {

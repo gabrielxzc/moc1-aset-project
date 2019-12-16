@@ -7,7 +7,7 @@ function Header() {
         <h1 className="title has-text-centered">
           Clink{" "}
           <span className="icon is-large">
-            <i className="fas fa-assistive-listening-systems"></i>
+            <i className="fas fa-assistive-listening-systems" />
           </span>
         </h1>
         <p className="subtitle has-text-centered">
