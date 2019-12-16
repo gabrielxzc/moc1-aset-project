@@ -5,15 +5,14 @@ from dev.clink.experts.data_expert import normalize
 
 
 class Model:
-    def __init__(self, input_shape, output_shape):
+    def __init__(self, input_shape, output_shape, model_name='ResNet50'):
         self.model = None
+        self.model_name = model_name
         self.build_model(input_shape, output_shape)
 
-    @fit
+    # @fit
     def fit(self, x, y, epochs=5, batch_size=128, validation_data=None):
-        self.model.fit(
-            x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data
-        )
+        return self.model.fit(x, y, epochs=epochs, batch_size=batch_size, validation_data=validation_data)
 
     def evaluate(self, x, y):
         return self.model.evaluate(x, y)
