@@ -71,8 +71,8 @@ class PredictedLabelForUploadedAudio(Base):
     audio_file_id = Column(ForeignKey('uploaded_audio_files.id'))
     label_id = Column(ForeignKey('labels.id'))
 
-    UniqueConstraint(audio_file_id, label_id, name="audio_label_ids_pair_constraint")
-    Index("audio_label_idx", audio_file_id, label_id)
+    UniqueConstraint(audio_file_id, label_id, name="audio_label_pred_ids_pair_constraint")
+    Index("audio_label_pred_idx", audio_file_id, label_id)
     label = relationship("Label")
 
     def __init__(self, audio_file_id, label_id):
