@@ -35,10 +35,12 @@ class QueryService(IQueryService):
             if label is None:
                 continue
             for audio in label.audio_files:
-                results["metadata"].append({
-                    "id": audio.id,
-                    "description": audio.description,
-                    "labels": [l.label_name for l in audio.label_files]
-                })
+                results["metadata"].append(
+                    {
+                        "id": audio.id,
+                        "description": audio.description,
+                        "labels": [l.label_name for l in audio.label_files],
+                    }
+                )
 
         return results

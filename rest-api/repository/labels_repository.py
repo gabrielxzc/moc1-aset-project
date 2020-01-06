@@ -38,8 +38,10 @@ class LabelRepository:
 
     def insert_or_update(self, label_name):
         self.add(label_name) if self.find_by_label_name(
-            label_name) is None else self.update(id, label_name)
+            label_name
+        ) is None else self.update(id, label_name)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     label_repository = LabelRepository()
-    print(label_repository.find_by_label_name('Bark'))
+    print(label_repository.find_by_label_name("Bark"))

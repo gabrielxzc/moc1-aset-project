@@ -12,7 +12,7 @@ def local_request(url, cookie):
         req.add_header("cookie", cookie)
 
         f = urllib.request.urlopen(req)
-        response = f.read().decode('utf-8')
+        response = f.read().decode("utf-8")
         if "SUCCESS" in response:
             success = True
     except Exception as e:
@@ -43,19 +43,16 @@ def request(url, cookie):
 
 
 def start_async(pool, cookie):
-    pool.apply_async(request, kwds={
-        "url": url,
-        "cookie": cookie
-    })
+    pool.apply_async(request, kwds={"url": url, "cookie": cookie})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     url = "http://localhost:5000/search?query=abc"
     req = urllib.request.Request(url=url, method="GET")
 
     f = urllib.request.urlopen(req)
-    response = f.read().decode('utf-8')
-    _cookie = f.headers.get('Set-Cookie') or ""
+    response = f.read().decode("utf-8")
+    _cookie = f.headers.get("Set-Cookie") or ""
 
     pool = ThreadPool(10)
 

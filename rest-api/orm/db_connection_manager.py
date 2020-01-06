@@ -10,7 +10,6 @@ warnings.filterwarnings("ignore")
 
 
 class DbConnection:
-
     def __init__(self):
         pass
 
@@ -40,7 +39,7 @@ def try_simple_operation_in_database():
     engine_db_connection = dbConnection.make_connection()
 
     session = dbConnection.create_tables(engine=engine_db_connection)
-    session.add(Label(label_name='Bark'))
+    session.add(Label(label_name="Bark"))
     session.commit()
 
     labels_elem = session.query(Label).all()

@@ -12,8 +12,8 @@ Base = declarative_base()
 
 
 class AudioFileTrain(Base):
-    __tablename__ = 'audio_files_train'
-    __table_args__ = {'extend_existing': True}
+    __tablename__ = "audio_files_train"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
     filepath = Column(VARCHAR)
@@ -24,12 +24,12 @@ class AudioFileTrain(Base):
 
 
 class AudioFileLabelsTrain(Base):
-    __tablename__ = 'audio_file_labels'
-    __table_args__ = {'extend_existing': True}
+    __tablename__ = "audio_file_labels"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
-    audio_file_id = Column(ForeignKey('audio_files_train.id'))
-    label_id = Column(ForeignKey('labels.id'))
+    audio_file_id = Column(ForeignKey("audio_files_train.id"))
+    label_id = Column(ForeignKey("labels.id"))
     UniqueConstraint(audio_file_id, label_id, name="audio_label_ids_pair_constraint")
     Index("audio_label_idx", audio_file_id, label_id)
     label = relationship("Label")
@@ -39,15 +39,17 @@ class AudioFileLabelsTrain(Base):
         self.label_id = label_id
 
 
-association_table = Table('predicted_label_for_uploaded_audio', Base.metadata,
-                          Column('audio_file_id', Integer, ForeignKey('uploaded_audio_files.id')),
-                          Column('label_id', Integer, ForeignKey('labels.id'))
-                          )
+association_table = Table(
+    "predicted_label_for_uploaded_audio",
+    Base.metadata,
+    Column("audio_file_id", Integer, ForeignKey("uploaded_audio_files.id")),
+    Column("label_id", Integer, ForeignKey("labels.id")),
+)
 
 
 class UploadedAudioFile(Base):
-    __tablename__ = 'uploaded_audio_files'
-    __table_args__ = {'extend_existing': True}
+    __tablename__ = "uploaded_audio_files"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
     filepath = Column(VARCHAR)
@@ -59,8 +61,8 @@ class UploadedAudioFile(Base):
 
 
 class Label(Base):
-    __tablename__ = 'labels'
-    __table_args__ = {'extend_existing': True}
+    __tablename__ = "labels"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
     label_name = Column(VARCHAR)

@@ -23,7 +23,9 @@ class UploadedAudioFileRepository:
         return self.session.query(UploadedAudioFile).get(id)
 
     def find_by_file_path(self, file_path):
-        return self.session.query(UploadedAudioFile).filter_by(file_path=file_path).first()
+        return (
+            self.session.query(UploadedAudioFile).filter_by(file_path=file_path).first()
+        )
 
     def get_all(self):
         return pd.read_sql_table(UploadedAudioFile.__tablename__, URL_TO_DATABASE)
@@ -39,7 +41,9 @@ class UploadedAudioFileRepository:
 
     def insert_or_update(self, file_path):
         self.add(file_path) if self.find_by_file_path(
-            file_path) is None else self.update(id, file_path)
+            file_path
+        ) is None else self.update(id, file_path)
+
 
 # if __name__ == '__main__':
 #     upload_audio_file_repository = UploadedAudioFileRepository()

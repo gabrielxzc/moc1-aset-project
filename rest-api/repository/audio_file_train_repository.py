@@ -38,4 +38,5 @@ class AudioFileTrainRepository:
 
     def insert_or_update(self, file_path):
         self.add(file_path) if self.find_by_file_path(
-            file_path) is None else self.update(id, file_path)
+            file_path
+        ) is None else self.update(id, file_path)

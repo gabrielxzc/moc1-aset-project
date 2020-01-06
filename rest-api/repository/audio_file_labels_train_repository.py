@@ -22,7 +22,12 @@ class AudioFileLabelsTrainRepository:
         return self.session.query(AudioFileLabelsTrain).get(id)
 
     def find_by_pair_of_ids(self, audio_file_id, label_id):
-        return self.session.query(AudioFileLabelsTrain).filter_by(label_id=label_id).filter_by(audio_file_id=audio_file_id).first()
+        return (
+            self.session.query(AudioFileLabelsTrain)
+            .filter_by(label_id=label_id)
+            .filter_by(audio_file_id=audio_file_id)
+            .first()
+        )
 
     def get_all(self):
         return pd.read_sql_table(AudioFileLabelsTrain.__tablename__, URL_TO_DATABASE)
@@ -38,4 +43,5 @@ class AudioFileLabelsTrainRepository:
 
     def insert_or_update(self, audio_file_id, label_id):
         self.add(audio_file_id, label_id) if self.find_by_pair_of_ids(
-            audio_file_id, label_id) is None else self.update(id, audio_file_id, label_id)
+            audio_file_id, label_id
+        ) is None else self.update(id, audio_file_id, label_id)
