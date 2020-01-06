@@ -1,6 +1,6 @@
 from typing import List
 
-from repository.media_repository import IMediaRepository
+from orm.entities import Label
 
 
 class IQueryService:
@@ -9,8 +9,8 @@ class IQueryService:
 
 
 class QueryService(IQueryService):
-    def __init__(self, media_repository: IMediaRepository):
-        self.repository = media_repository
+    def __init__(self, label_repository):
+        self.repository = label_repository
 
     @staticmethod
     def extract_labels(query: str) -> List[str]:
@@ -29,4 +29,16 @@ class QueryService(IQueryService):
         :return: dictionary with media metadata
         """
         labels = self.extract_labels(query)
-        return self.repository.get_by_label(labels)
+        results = {"metadata": []}
+        for label in labels:
+            label: Label = self.repository.find_by_label_name(label)
+            if label is None:
+                continue
+            for audio in label.audio_files:
+                results["metadata"].append({
+                    "id": audio.id,
+                    "description": audio.description,
+                    "labels": [l.label_name for l in audio.label_files]
+                })
+
+        return results

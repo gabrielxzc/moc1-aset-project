@@ -6,7 +6,7 @@ class IDiskRepository:
 class DiskRepository(IDiskRepository):
     def get_file(self, path: str) -> bytes:
         in_file = open(
-            r"D:\moc1-aset-project\data\sounds\train_curated\00b0b76f.wav", "rb"
+            path, "rb"
         )
         data = in_file.read()
         in_file.close()
