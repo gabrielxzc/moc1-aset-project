@@ -44,10 +44,14 @@ class TestQueryService(TestCase):
         assert labels == ["abc", "def", "gh.", "12"]
 
     def test_get_metadata(self):
-        expected_result = {'metadata': [{'id': 1, 'description': "test", 'labels': []},
-                                        {'id': 2, 'description': "test1", 'labels': []},
-                                        {'id': 3, 'description': "test2", 'labels': []},
-                                        {'id': 4, 'description': "test1", 'labels': []}]}
+        expected_result = {
+            "metadata": [
+                {"id": 1, "description": "test", "labels": []},
+                {"id": 2, "description": "test1", "labels": []},
+                {"id": 3, "description": "test2", "labels": []},
+                {"id": 4, "description": "test1", "labels": []},
+            ]
+        }
         metadata = self.query_service.get_metadata(self.QUERY)
 
         assert metadata == expected_result
