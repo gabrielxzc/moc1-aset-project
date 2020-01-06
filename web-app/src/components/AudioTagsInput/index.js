@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
 import InputWithSuggestions from "../generic/InputWithSuggestions";
-import AudioTag from "../../elements/AudioTag";
+import AudioTags from "../../elements/AudioTags";
 
 import { ALL_AUDIO_TAGS } from "../../commonlib/audio-tags";
 
@@ -36,7 +36,7 @@ const AudioTagsInput = props => {
   const handleSearch = () => {
     props.history.push({
       pathname: props.location.pathname,
-      search: queryString.stringify({ tags: selectedAudioTags })
+      search: queryString.stringify({tags: selectedAudioTags})
     });
   };
 
@@ -63,17 +63,8 @@ const AudioTagsInput = props => {
         </div>
       </div>
       <div className="columns is-centered">
-        <div className="tags">
-          {selectedAudioTags.map((tag, index) => (
-            <AudioTag
-              key={index}
-              className="is-info"
-              tag={tag}
-              isWithDeleteIcon
-              handleClick={() => handleDelete(tag)}
-            />
-          ))}
-        </div>
+        <AudioTags tags={selectedAudioTags} isWithDeleteIcon={true}
+                   handleTagDelete={(tag) => handleDelete(tag)}/>
       </div>
     </section>
   );

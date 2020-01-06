@@ -8,8 +8,8 @@ const AudioTag = props => {
 
     if (props.isWithDeleteIcon) {
       classes += "is-medium is-with-delete-icon";
-    } else if (props.isEditable) {
-      classes += "is-medium audio-tag";
+    } else {
+      classes += "is-info";
     }
 
     return classes;

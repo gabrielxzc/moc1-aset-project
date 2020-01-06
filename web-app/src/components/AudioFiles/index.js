@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
 import AudioFile from "../AudioFile";
-import Loader from "../generic/Loader";
+import Loader from "../../elements/Loader";
 
 import { getAudioFiles } from "../../server-communication/impl/audio-files";
 
