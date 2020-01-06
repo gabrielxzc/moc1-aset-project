@@ -487,6 +487,7 @@ def calculate_overall_lwlrap_sklearn(truth, scores):
 
 \addcontentsline{toc}{section}{IV.1. Problem description}
 \section*{IV.1. Problem description}
+\
 
 The environmental sound classification problem can come in many different shapes, from having to classify short audio files with a label from a specified set to having to tag live audio streaming with one or multiple labels.
 \\
@@ -696,6 +697,231 @@ Video indexer flow
  \hline
 \end{tabular}
 \end{center}
+
+%----------------------------------------------------------------------------------------
+%	Technical report of Clink application
+%----------------------------------------------------------------------------------------
+
+
+\addcontentsline{toc}{chapter}{VII. Technical report of Clink application}
+\chapter*{VII. Technical report of Clink application}
+
+%----------------------------------------------------------------------------------------
+%	Problem presentation
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.1. Problem presentation}
+\section*{VII.1. Problem presentation}
+\
+
+\begin{center}
+\includegraphics[width=16.5cm,height=9cm,keepaspectratio]{competiton-description}
+\end{center}
+\
+
+\textbf{Some sounds are distinct and instantly recognizable, like a baby’s laugh or the strum of a guitar}. Other sounds are difficult to pinpoint. If you close your eyes, could you tell the difference between the sound of a chainsaw and the sound of a blender?
+\\
+
+Because of \textbf{the vastness of sounds we experience}, \textit{no reliable automatic general-purpose audio tagging systems exist}. A significant amount of manual effort goes into tasks like annotating sound collections and providing captions for non-speech events in audiovisual content.
+\\
+
+To tackle this problem, Freesound (an initiative by MTG-UPF that maintains a collaborative database with over 400,000 Creative Commons Licensed sounds) and Google Research’s Machine Perception Team (creators of AudioSet, a large-scale dataset of manually annotated audio events with over 500 classes) have teamed up to develop the dataset for a new Kaggle competition.
+\\
+
+\textbf{To win} this competition, Kagglers will develop an \textbf{algorithm to tag audio data automatically} using a diverse vocabulary of 80 categories.
+\\
+
+If successful, these systems could be used for several applications, ranging from \textbf{automatic labelling of sound collections} to \textbf{the development of systems that automatically tag video content} or recognize sound events happening in real time.
+
+%----------------------------------------------------------------------------------------
+%	Motivation
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{subsection}{VII.1.1. Our motivation}
+\section*{VII.1.1. Our motivation}
+\
+
+Current machine learning techniques require large and varied datasets in order to provide good performance and generalization. However, manually labelling a dataset is time-consuming, which limits its size. The main research question addressed in this competition is \textbf{how to adequately exploit a small amount of reliable, manually-labeled data, and a larger quantity of noisy web audio data in a multi-label audio tagging task with a large vocabulary setting}. In addition, since the data comes from different sources, the task encourages domain adaptation approaches to deal with a potential domain mismatch.
+
+%----------------------------------------------------------------------------------------
+%	The summary of the state-of-the-art
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.2. The summary of the state-of-the-art}
+\section*{VII.2. The summary of the state-of-the-art}
+\
+
+The environmental sound classification problem can come in many different shapes, from having to classify short audio files with a label from a specified set to having to tag live audio streaming with one or multiple labels.
+\\
+
+Automatic environmental sound classification or tagging is a growing area of research. Work done in this area is comparatively scarce with work done in related audio fields such as speech and music. Applications are numerous and include multimedia indexing and retrieval, environmental sounds subtitles, assisting deaf individuals or even monitoring illegal deforestation. A very interesting project regarding this last use case is created by a non-profit organization called Delta Analytics. They helped build a system where a lot of old mobile phones are attached to trees in rain forests which listen to chainsaw noises. Their role is to identify when a chainsaw is being used and alert rangers who can stop illegal deforestation \cite{13}.
+\\
+
+Because of the recent success in image classification, the question that raises is: can we bring techniques used in image classification to sound classification by representing sound in various image formats?
+\\
+
+\textbf{State of the art solution to solving this problem is deep learning}. By dividing the audio and transforming it into spectrograms we can use some of the success of image classification and bring it to audio classification. Just applying image classification on spectrograms doesn't work because sound in form of spectrograms doesn't have the same properties as an image but by adapting the network to the new context we can obtain a solution to solving this problem.
+
+%----------------------------------------------------------------------------------------
+%	Proposed solution - CLINK application
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.3. Proposed solution - CLINK application}
+\section*{VII.3. Proposed solution - CLINK application}
+\
+
+\begin{center}
+\includegraphics[scale=0.26]{click-app-fe.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.3.1.}: \textit{User uploads an audio file}
+\end{center}
+\
+
+\begin{center}
+\includegraphics[scale=0.45]{user-uploads-audio.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.3.2.}: \textit{Clink application}
+\end{center}
+
+The \textbf{Clink application} is an \textbf{audio indexer} that \textbf{allows the upload of an audio file and returns the tags corresponding to the sound extracted in that audio file}. As well this application \textbf{allows the filtration by tag name of a set of audio files persisted in a local database}. By doing this, in the user interface will be displayed a couple of audio files if any corresponding to that tag. To be more specific, one of the principal use cases of the Clink application is illustrated in the above use-case diagram.  The response for a search call for the \textbf{'Bark'} tag for example will look like this:
+
+\begin{center}
+\includegraphics[scale=0.5]{mocked-api-response.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.3.3.}: \textit{Api reponse for 'Bark' tag}
+\end{center}
+\
+
+Regarding \textbf{technical implementation details}, the front-ned was developed in nodejs and the backend in \textbf{Python 3.7} using a \textbf{Flask API} along with an \textbf{ORM} developed in \textbf{SQLAlchemy}. The database in which the data is stored was \textbf{Postgres}.
+\\
+
+Concerning the \textbf{Machine Learning implementation}, \textbf{\textit{the proposed solution involves mapping the audio files, after the normalization step, to a visual representation}}. Spectrograms are a useful technique for visualizing the spectrum of frequencies of a sound and how they vary during a very short period of time. A similar technique known as mel-spectrogram can be used for this case. The main difference is that a spectrogram uses a linear spaced frequency scale (so each frequency bin is spaced an equal number of Hertz apart), whereas a mel-spectrogram uses a quasi-logarithmic spaced frequency scale, which is more similar to how the human auditory system processes sounds. \textbf{We used spectograms, which we further divided into windows with the help of which we contructed our train datasets}. 
+
+\begin{center}
+\includegraphics[scale=0.8]{sound-representation.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.3.4.}: \textit{Spectrogram and mel-spectrogram}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	Results /  Evaluation
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.4. Results /  Evaluation}
+\section*{VII.4. Results /  Evaluation}
+
+For the classification of a given sound as belonging to into one or more classes we managed to have different attempts with several models of pre-trained neural networks. The models we used in our experiments are: VGG16, VGG19, ResNet50, Resnet50V2, InceptionV3, InceptionResNetV2, MobileNet and MobileNetV2. The best results were obtained by VGG16, VGG19 and ResNet50. In the next phase, we will apply a genetic algorithm to choose the subset of the models mentioned above in order to optimize the accuracy of the model set. The result of our model will consist in the average of the results of the models in the subset mentioned above.
+\\
+
+\begin{center}
+\includegraphics[scale=0.38]{resnet50.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.4.1.}: \textit{Resnet50 architecture}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.5]{vgg16.png}
+\end{center}
+\begin{center}
+\textbf{Fig. VII.4.2.}: \textit{VGG16 architecture}
+\end{center}
+
+
+%----------------------------------------------------------------------------------------
+%  Comparison with other solutions
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.5. Comparison with other solutions}
+\section*{VII.5. Comparison with other solutions}
+
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{ | M{4.6cm} | m{2cm} | m{2cm} |m{2cm} | m{2cm}} 
+\hline
+\rowcolor[rgb]{0.8588, 0.2823, 0.1725}\multicolumn{5}{|c|}{\textcolor{white}{Results obtained using pre-trained models}} \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{VGG16}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0034} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8140} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0083} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,5731}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{VGG19}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0032} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8222} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0096} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,5287}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{ResNet50}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0017} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,9181} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0090} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,5545}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{ResNet50V2}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0028} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8578} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0101} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,4770}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{InceptionV3}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0050} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,7188} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0114} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,4230}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{InceptionResNetV2}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0034} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8159} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0106} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,4833}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{MobileNet}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0032} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8341} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0087} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,5396}  \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white}{MobileNetV2}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0035} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8068} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,0106} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,4677}  \\
+\hline
+\end{tabular}
+\end{footnotesize}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%  Future work
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.6. Future work}
+\section*{VII.6. Future work}
+
+
+%----------------------------------------------------------------------------------------
+%  Conclusions
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.7. Conclusions}
+\section*{VII.7. Conclusions}
+
+
+%----------------------------------------------------------------------------------------
+%  Links
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{VII.8. Links}
+\section*{VII.8. Links}
+\
+
+\textbf{\footnotemark The Github repository can be accessed at:}
+
+\footnotetext{Permission required}
+
+\ \ \ \ \hspace{2cm} \textit{https://github.com/gabrielxzc/moc1-aset-project}
+\\
+
+\textbf{\footnotemark The Trello Board can be accessed at:}
+\footnotetext{Permission required}
+
+\ \ \ \ \hspace{2cm} \textit{https://trello.com/b/phl7r8hL/moc1-aset-project}
+\\
+
+\textbf{The Kaggle Competition can be accessed at: }
+
+\ \ \ \ \hspace{2cm} \textit{https://www.kaggle.com/c/freesound-audio-tagging-2019}
+
+
 
 
 %----------------------------------------------------------------------------------------
