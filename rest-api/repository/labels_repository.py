@@ -22,7 +22,7 @@ class LabelRepository:
         return self.session.query(Label).get(id)
 
     def find_by_label_name(self, label_name):
-        return self.session.find(Label).filter_by(label_name=label_name).first()
+        return self.session.query(Label).filter_by(label_name=label_name).first()
 
     def get_all(self):
         return pd.read_sql_table(Label.__tablename__, URL_TO_DATABASE)
@@ -39,3 +39,7 @@ class LabelRepository:
     def insert_or_update(self, label_name):
         self.add(label_name) if self.find_by_label_name(
             label_name) is None else self.update(id, label_name)
+
+if __name__ == '__main__':
+    label_repository = LabelRepository()
+    print(label_repository.find_by_label_name('Bark'))

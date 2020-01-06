@@ -22,7 +22,7 @@ class AudioFileTrainRepository:
         return self.session.query(AudioFileTrain).get(id)
 
     def find_by_file_path(self, file_path):
-        return self.session.find(AudioFileTrain).filter_by(file_path=file_path).first()
+        return self.session.query(AudioFileTrain).filter_by(file_path=file_path).first()
 
     def get_all(self):
         return pd.read_sql_table(AudioFileTrain.__tablename__, URL_TO_DATABASE)
