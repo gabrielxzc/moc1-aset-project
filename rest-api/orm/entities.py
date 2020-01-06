@@ -56,8 +56,9 @@ class UploadedAudioFile(Base):
     description = Column(VARCHAR)
     label_files = relationship("Label", secondary=association_table)
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, description):
         self.filepath = filepath
+        self.description = description
 
 
 class Label(Base):
