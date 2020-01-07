@@ -832,12 +832,19 @@ For the classification of a given sound as belonging to into one or more classes
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{VII.5. Comparison with other solutions}
 \section*{VII.5. Comparison with other solutions}
+\
 
+The results obtained using the models mentioned in the above section are the following:
 \begin{center}
 \begin{footnotesize}
 \begin{tabular}{ | M{4.6cm} | m{2cm} | m{2cm} |m{2cm} | m{2cm}} 
 \hline
 \rowcolor[rgb]{0.8588, 0.2823, 0.1725}\multicolumn{5}{|c|}{\textcolor{white}{Results obtained using pre-trained models}} \\
+\hline
+\cellcolor[rgb]{0.6745, 0.686, 0.709}
+\textit{\textbf{\textcolor{white} {\textbf{Model Name}}}} & \cellcolor[rgb]{0.965, 0.969, 0.967}  \textbf{Train loss} & \cellcolor[rgb]{0.965, 0.969, 0.967}  \textbf{Train acc.} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  \textbf{Test loss} 
+& \cellcolor[rgb]{0.965, 0.969, 0.967}  \textbf{Test acc.}  \\
 \hline
 \cellcolor[rgb]{0.6745, 0.686, 0.709}
 \textit{\textbf{\textcolor{white}{VGG16}}}& \cellcolor[rgb]{0.965, 0.969, 0.967}  {0.0034} & \cellcolor[rgb]{0.965, 0.969, 0.967}  {0,8140} 
@@ -888,13 +895,26 @@ For the classification of a given sound as belonging to into one or more classes
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{VII.6. Future work}
 \section*{VII.6. Future work}
+\
 
+Regarding the future work, the following ideas could be implemented:
+\begin{itemize}
+\item trying further models to improve the accuracy
+\item improving the interface to be more complex, along with the login on the back-end side
+\item implementing the usecase in which a user uploads a video file
+\item extending the current augio engine to have usecases in security (e.g. detecting breaking in sounds, hearth attack/ people suffering, etc.)
+\item using the application for analyzing audience behavior(excitement, boredom, etc.)
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 %  Conclusions
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{VII.7. Conclusions}
 \section*{VII.7. Conclusions}
+\
+
+Clink application solved the problem of audio file classification by using deep learning as a consistent base from which the Machine Learning component was built. By dividing the audio and transforming it into spectrograms we used some of the success of image classification and brought it to audio classification. The competition was thought-provoking and it was a great opportunity for us to invest time into this part of audio processing, audio normalisation and image classification. Even though the aplication is nou in a Beta version, we hope we are going to come with further improvements.
+
 
 
 %----------------------------------------------------------------------------------------
