@@ -1,5 +1,4 @@
 import pickle
-import dev.clink.aspects.experts.storage_expert as aspects
 
 
 # @aspects.save_object_aspect

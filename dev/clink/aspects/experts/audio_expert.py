@@ -1,4 +1,4 @@
-import aspectlib
+# import aspectlib
 
 
 class Config:
@@ -12,14 +12,14 @@ class Config:
     samples = sampling_rate * duration
 
 
-@aspectlib.Aspect
+# @aspectlib.Aspect
 def init(*args, **kwargs):
     print("Initializing new Audio Expert ...")
     if "config" not in kwargs:
         print("Config was none, inserting default config")
         kwargs.update({"config": Config()})
-        yield aspectlib.Proceed(*args, **kwargs)
+        # yield aspectlib.Proceed(*args, **kwargs)
     else:
         print("Config is present, passing it further")
-        yield aspectlib.Proceed
+        # yield aspectlib.Proceed
     print("Successfully initialized audio expert")

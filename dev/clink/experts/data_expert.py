@@ -21,7 +21,7 @@ def df_to_labeled_sounds(df):
 
 
 class DataExpert:
-    def __init__(self, data_root="data"):
+    def __init__(self, data_root="data", load_stuff=True):
         self.sounds_root = Path(data_root) / "sounds"
 
         self.train_curated_root = self.sounds_root / "train_curated"

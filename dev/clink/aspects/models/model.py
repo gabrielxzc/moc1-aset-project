@@ -1,7 +1,7 @@
 import subprocess
 from typing import Generator
 
-import aspectlib
+# import aspectlib
 import keras
 
 
@@ -63,7 +63,7 @@ def get_model_memory_usage(model: keras.Model) -> float:
     return np.round(total_memory / (1024.0 ** 2), 3) + internal_model_mem_count
 
 
-@aspectlib.Aspect
+# @aspectlib.Aspect
 def fit(*args, **kwargs) -> Generator:
     # TODO: take in account the number of GPUs
 
@@ -84,4 +84,4 @@ def fit(*args, **kwargs) -> Generator:
 
         kwargs.update({"batch_size": int(recommended_batch_size)})
         print("Using recommended batch size", recommended_batch_size)
-        yield aspectlib.Proceed(*args, **kwargs)
+        # yield aspectlib.Proceed(*args, **kwargs)

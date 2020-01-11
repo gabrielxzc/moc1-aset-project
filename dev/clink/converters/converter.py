@@ -15,7 +15,7 @@ def log_call(cutpoint, *args, **kargs):
 
 
 class Converter:
-    @init
+    # @init
     def __init__(self, data_expert=None, audio_expert=None, image_expert=None):
         self.destination_root = Path(self.get_destination_root())
         self.destination_train_curated = self.destination_root / "train_curated"
@@ -83,7 +83,7 @@ class Converter:
             self.save_array_images(test, self.destination_test)
 
     @staticmethod
-    @ensure_wav_extension
+    # @ensure_wav_extension
     def save_array_images(images, root):
         for (name, image) in images:
             # print(name)

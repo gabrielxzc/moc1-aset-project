@@ -9,7 +9,7 @@ DATA_EXPERT = "data_expert"
 IMAGE_EXPERT = "image_expert"
 
 
-@aspectlib.Aspect
+# @aspectlib.Aspect
 def init(*args, **kwargs):
     print("Initializing new Converter ...")
 
@@ -25,6 +25,6 @@ def init(*args, **kwargs):
         print("Converter did not receive an image expert. Creating a default one.")
         kwargs.update({IMAGE_EXPERT: ImageExpert()})
 
-    yield aspectlib.Proceed(*args, **kwargs)
+    # yield aspectlib.Proceed(*args, **kwargs)
 
     print("Converter successfully initialized.")

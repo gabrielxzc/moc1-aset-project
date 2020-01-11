@@ -20,18 +20,31 @@ class Windower:
             while self.window_size * (k + 1) <= array.shape[1]:
                 new_arrays.append(
                     array[
-                        :,
-                        int(self.window_size * k) : int(self.window_size * (k + 1)),
-                        :,
+                    :,
+                    int(self.window_size * k): int(self.window_size * (k + 1)),
+                    :,
                     ]
                 )
                 new_labels.append(label)
                 k += 1 - self.overlap
-            new_arrays.append(array[:, -self.window_size :, :])
+            new_arrays.append(array[:, -self.window_size:, :])
             new_labels.append(label)
         new_arrays = np.array(new_arrays) / 255
         new_labels = np.array(new_labels) / 255
         return new_arrays, new_labels
+
+    def to_windows_only_x(self, arrays):
+        new_arrays = []
+        for array in arrays:
+            k = 0
+            while self.window_size * (k + 1) <= array.shape[1]:
+                new_arrays.append(
+                    array[:, int(self.window_size * k): int(self.window_size * (k + 1)), :, ]
+                )
+                k += 1 - self.overlap
+            new_arrays.append(array[:, -self.window_size:, :])
+        new_arrays = np.array(new_arrays) / 255
+        return new_arrays
 
     def build_submission(self, model, root_dir):
         names = self.data_expert.get_test_wav_names()
@@ -43,9 +56,9 @@ class Windower:
             while self.window_size * (k + 1) <= array.shape[1]:
                 new_arrays.append(
                     array[
-                        :,
-                        int(self.window_size * k) : int(self.window_size * (k + 1)),
-                        :,
+                    :,
+                    int(self.window_size * k): int(self.window_size * (k + 1)),
+                    :,
                     ]
                 )
                 k += 1 - self.overlap
