@@ -10,3 +10,12 @@ class DiskRepository(IDiskRepository):
         in_file.close()
 
         return data
+
+    def save_file(self, filepath, data: bytes):
+        with open(filepath, "wb") as f:
+            f.write(data)
+
+
+if __name__ == "__main__":
+    disk_repository = DiskRepository()
+    disk_repository.save_file("./file.wav", disk_repository.get_file("../test/data/audio.wav"))
