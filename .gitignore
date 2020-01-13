@@ -16,4 +16,5 @@
 /work
 **/*__pycache__*
 calls.txt
-
+/rest-api/venv/
+/rest-api/.idea
