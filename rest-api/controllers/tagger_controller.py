@@ -1,6 +1,7 @@
 import base64
 from flask_restful import Resource, request
 from algorithm.submission_tagger import tag_sound
+from keras.models import load_model
 
 
 class TaggerController(Resource):
@@ -11,4 +12,6 @@ class TaggerController(Resource):
         tmp_image.write(decoded)
         tmp_image.close()
 
-        return tag_sound("tmp_image.wav")
+        # load_model('model/model.h5')
+        tags = tag_sound("tmp_image.wav")
+        return tags.tolist()

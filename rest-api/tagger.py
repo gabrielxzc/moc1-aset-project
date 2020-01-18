@@ -3,7 +3,7 @@ from algorithm.submission_tagger import tag_sound
 from base64 import b64encode, decodebytes
 
 if __name__ == "__main__":
-    filename = "0a9bebde.wav"
+    filename = "tmp_image.wav"
 
     # encoded_string = b64encode(open(filename, "r").read())
     # print(encoded_string)
