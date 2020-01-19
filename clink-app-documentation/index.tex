@@ -848,6 +848,9 @@ It is a certain fact that each models comes with its advantages and disadvantage
 \section*{VII.5. Comparison with other solutions}
 \
 
+In order to use the classification capabilities of as many models as possible, we have implemented a genetic algorithm to select the subgroup of models that, when ensembled would lead to the highest classification accuracy. It is important to be mentioned that aside from the models listed below, other weaker classifiers were taken into consideration when designing the genetic algorithm. As for the genetic algorithm, each individual is a string of bits representing whether we include or not the respective model into the ensembling. We have used a mutation rate of 0.05, cross-over rate of 0.6 and a roulette wheel for selection. The fitness function is the accuracy on the test data. It is relevant that for each model the predicted output was computed only once and stored before running the entire computation. This assures the fact that the fitness function is fast to compute, which is necessary when designing a genetic algorithm.
+\\
+
 The results obtained using the models mentioned in the above section are the following:
 \begin{center}
 \begin{footnotesize}
