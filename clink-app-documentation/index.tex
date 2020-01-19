@@ -766,6 +766,8 @@ Because of the recent success in image classification, the question that raises 
 \section*{VII.3. Proposed solution - CLINK application}
 \
 
+The \textbf{Clink application} is an \textbf{audio indexer} who's interface is attached bellow, that \textbf{allows the upload of an audio file and returns the tags corresponding to the sound extracted in that audio file}. As well this application \textbf{allows the filtration by tag name of a set of audio files persisted in a local database}. By doing this, in the user interface will be displayed a couple of audio files if any corresponding to that tag.
+
 \begin{center}
 \includegraphics[scale=0.26]{click-app-fe.png}
 \end{center}
@@ -774,6 +776,8 @@ Because of the recent success in image classification, the question that raises 
 \end{center}
 \
 
+To be more specific, one of the principal use cases of the Clink application is illustrated in the following use-case diagram. First of all the user uploads from its personal computer an audio file.The content of the audio file is sent encoded Base64 to the back-end server. The back-end server will decode the content of the file and will call a function from the ML component which is responsible with spliting the audio file in fragments of the same size. Each audio fragment is going to be processed by translating the audio sequences into spectograms. From here the pre-trained machine learning model is going to be called. When the execution is finished, a list of tags will be returned, list that is going to be collected by the front-end server as a response and after that rendered in a user-friendly manner into the interface.
+
 \begin{center}
 \includegraphics[scale=0.45]{user-uploads-audio.png}
 \end{center}
@@ -781,7 +785,7 @@ Because of the recent success in image classification, the question that raises 
 \textbf{Fig. VII.3.2.}: \textit{Clink application}
 \end{center}
 
-The \textbf{Clink application} is an \textbf{audio indexer} that \textbf{allows the upload of an audio file and returns the tags corresponding to the sound extracted in that audio file}. As well this application \textbf{allows the filtration by tag name of a set of audio files persisted in a local database}. By doing this, in the user interface will be displayed a couple of audio files if any corresponding to that tag. To be more specific, one of the principal use cases of the Clink application is illustrated in the above use-case diagram.  The response for a search call for the \textbf{'Bark'} tag for example will look like this:
+The response for a search call for the \textbf{'Bark'} tag for example will look like this:
 
 \begin{center}
 \includegraphics[scale=0.5]{mocked-api-response.png}
@@ -794,7 +798,10 @@ The \textbf{Clink application} is an \textbf{audio indexer} that \textbf{allows 
 Regarding \textbf{technical implementation details}, the front-ned was developed in nodejs and the backend in \textbf{Python 3.7} using a \textbf{Flask API} along with an \textbf{ORM} developed in \textbf{SQLAlchemy}. The database in which the data is stored was \textbf{Postgres}.
 \\
 
-Concerning the \textbf{Machine Learning implementation}, \textbf{\textit{the proposed solution involves mapping the audio files, after the normalization step, to a visual representation}}. Spectrograms are a useful technique for visualizing the spectrum of frequencies of a sound and how they vary during a very short period of time. A similar technique known as mel-spectrogram can be used for this case. The main difference is that a spectrogram uses a linear spaced frequency scale (so each frequency bin is spaced an equal number of Hertz apart), whereas a mel-spectrogram uses a quasi-logarithmic spaced frequency scale, which is more similar to how the human auditory system processes sounds. \textbf{We used spectograms, which we further divided into windows with the help of which we contructed our train datasets}. 
+The database was necessary for persisting the information; for instance, since the application allows the searching based on a specific tag name, it is required to have in the database a list of audio file names mapped to their corresponding tags. This was done using association tables, which illustrate relationships of many-to-many. The audio files content incoded into base64 is as well persisted into the databes, along with all the labels that can be detected by the ML component.
+\\
+
+To get into more details concerning the \textbf{Machine Learning implementation}, \textbf{\textit{the proposed solution involves mapping the audio files, after the normalization step, to a visual representation}}. Spectrograms are a useful technique for visualizing the spectrum of frequencies of a sound and how they vary during a very short period of time. A similar technique known as mel-spectrogram can be used for this case. The main difference is that a spectrogram uses a linear spaced frequency scale (so each frequency bin is spaced an equal number of Hertz apart), whereas a mel-spectrogram uses a quasi-logarithmic spaced frequency scale, which is more similar to how the human auditory system processes sounds. \textbf{We used spectograms, which we further divided into windows with the help of which we contructed our train datasets}. 
 
 \begin{center}
 \includegraphics[scale=0.8]{sound-representation.png}
@@ -808,9 +815,12 @@ Concerning the \textbf{Machine Learning implementation}, \textbf{\textit{the pro
 %----------------------------------------------------------------------------------------
 \addcontentsline{toc}{section}{VII.4. Results /  Evaluation}
 \section*{VII.4. Results /  Evaluation}
+\
 
 For the classification of a given sound as belonging to into one or more classes we managed to have different attempts with several models of pre-trained neural networks. The models we used in our experiments are: VGG16, VGG19, ResNet50, Resnet50V2, InceptionV3, InceptionResNetV2, MobileNet and MobileNetV2. The best results were obtained by VGG16, VGG19 and ResNet50. In the next phase, we will apply a genetic algorithm to choose the subset of the models mentioned above in order to optimize the accuracy of the model set. The result of our model will consist in the average of the results of the models in the subset mentioned above.
 \\
+
+ResNet-50 is a convolutional neural network that is trained on more than a million images from the ImageNet database. The network is 50 layers deep and can classify images into 1000 object categories, such as keyboard, mouse, pencil, and many animals. As a result, the network has learned rich feature representations for a wide range of images.
 
 \begin{center}
 \includegraphics[scale=0.38]{resnet50.png}
@@ -819,12 +829,16 @@ For the classification of a given sound as belonging to into one or more classes
 \textbf{Fig. VII.4.1.}: \textit{Resnet50 architecture}
 \end{center}
 
+VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 92.7\% top-5 test accuracy in ImageNet, previously mentioned, which is a dataset of over 14 million images belonging to 1000 classes. This is why we thought that by using this pretrained model with transfer learning techniques the accuracy will be increased comparing with the previous models. The architecture of this neural network is illustrated bellow.
+
 \begin{center}
 \includegraphics[scale=0.5]{vgg16.png}
 \end{center}
 \begin{center}
 \textbf{Fig. VII.4.2.}: \textit{VGG16 architecture}
 \end{center}
+
+It is a certain fact that each models comes with its advantages and disadvantages, these can be seen in the next results section of this technical report. 
 
 
 %----------------------------------------------------------------------------------------
